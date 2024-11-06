@@ -1,0 +1,7 @@
+function checkprime(number1 , number2 , number3) -> average
+   average = (number1 , number2 , number3)/3  //calculating the average
+  return average
+main function
+    input number1 , number2 , number3
+    checkprime(number1 , number2 , number3)
+    print average

@@ -1,0 +1,13 @@
+function checkeven(number) -> result
+ 
+ if(number % 2 ==0)
+       result="The number is even"
+ else 
+    result="The number is not even"
+
+    return result
+
+main function
+    input number
+    checkeven(number)
+    print result

@@ -1,0 +1,19 @@
+function checkprime(number) -> result
+ factor=0;
+if(number==0 | | number == 1 )
+   result ="The number is neither prime nor composite"
+for(count =1  to number/2 )
+       if( number % count ==0)
+          factor++   //counter to count the factors
+           
+ if(factor>2)
+       result="The number is prime"
+ else 
+    result="The number is not prime"
+
+    return result
+
+main function
+    input number
+    checkprime(number)
+    print result

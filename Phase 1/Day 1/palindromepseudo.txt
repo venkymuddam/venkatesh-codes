@@ -1,0 +1,15 @@
+function stringpalindrome(str) -> result
+ l=str.length  // taking the length of the string
+ for(position = 0 to l-1)
+ strrev = str.charAt(position) +strrev   // reversing and storing the string in a new variable
+
+if(str == strrev)
+ result="The string is palindrome"
+else
+   result="The string is not palindrome"
+   return result
+
+main function
+    input str
+    stringpalindrome(str)
+    print result
