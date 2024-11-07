@@ -1,0 +1,14 @@
+function checkvowel(str) -> result
+ for(count 0 to str.len-1)
+ if(str[count]=='A'|| str[count]=='A'|| str[count]=='E'|| str[count]=='I'|| str[count]=='O'|| str[count]=='U'|| str[count]=='a'|| str[count]=='e'|| str[count]=='i'|| str[count]=='o'|| str[count]=='u')
+       result+=str[count]
+
+if(result=="")
+    result="There is no vowel present in the string"
+    
+return result
+
+main function
+    input str
+    checkvowel(str)
+    print result
