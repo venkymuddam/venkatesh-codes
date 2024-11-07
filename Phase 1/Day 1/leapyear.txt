@@ -1,0 +1,10 @@
+function checkleapyear(year) -> result
+   if((year%4==0 && year %100 !==0) || year%400 ==0)
+      result ="Leap Year"
+   else
+      result="Not a leap year"
+  return result
+main function
+    input year
+    check leapyear(year)
+    print result
