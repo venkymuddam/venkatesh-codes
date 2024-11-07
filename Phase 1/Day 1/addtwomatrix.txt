@@ -1,0 +1,7 @@
+function addtwomatrix(number1 , number2 , number3) -> sum
+   sum = matrix1 + matrix 2
+  return sum
+main function
+    input matrix1,matrix2
+    addtwomatrix(matrix1,matrix2)
+    print sum
