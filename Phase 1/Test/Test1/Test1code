@@ -48,7 +48,7 @@ pseudocode :
 #include <limits>
 using namespace std;
 
-bool isDivisibleByThreeOrFive( int number)
+bool isDivisibleByThreeOrFive( int number) 
 {
   if ( number % 3 == 0 || number % 5 == 0 )
           return true;
@@ -103,7 +103,7 @@ int main()
 
 pseudofunction:
 
-int isHighest( number[] -> int , size -> int)
+int isHighest( number[] -> int , size -> int)-> int
    int max = number[0]
    for ( int i =1; i< size; i++)
           if(number[i] > max)
@@ -174,7 +174,7 @@ int main()
 
 [pseudo code and c++ code]
 pseudofunction:
-function toReverse( text -> string)
+function toReverse( text -> string)-> string
     int len = text.length()
     string rev = "";
     for ( int i=0; i< len ; i++)
@@ -248,7 +248,7 @@ int main(void)
 
 pseudocode function:
 
-function toFindSumOfTenNumbers( int number[])
+function toFindSumOfTenNumbers( int number[]) -> int
    int sum = 0
    for ( int i = 0; i < 10; i++)
          sum = sum + number[i]
@@ -308,83 +308,12 @@ int main()
 
 
 
-//----------- WITHOUT ARRAY--------------
-
-with array:
-
-pseudocode function:
-
-function toFindSumOfTenNumbers( int number[])
-   int sum = 0
-   for ( int i = 0; i < 10; i++)
-         sum = sum + number[i]
-   return sum
-end function
-
-function toFindSumOfTenNumbersTest()
-   int number[10]
-   print "enter 10 numbers"
-   for ( int i = 0; i < 10; i++)
-         input number[i]
-   print "The sum is " toFindSumOfTenNumbers( number) 
-
-pseudocode:
- toFindSumOfTenNumbersTest()
-
-
-
-
-
-
-//---------------CPP CODE:---------------------------
-
-
-#include <iostream>
-
-using namespace std;
-
-
-int toFindSumOfTenNumbers( int number[])
-{
-    int sum=0;
-    for (int i = 0; i < 10;i++)  
-    {
-        sum = sum + number[i];
-    }
-    return sum;
-}
-
-
-void toFindSumOfTenNumbersTest()
-{
-    int number[10];
-    
-    cout << "Enter 10 numbers: ";
-    for (int i = 0; i < 10; i++)
-    {
-        cin >> number[i];  
-    }
-  
-    cout << "The Sum is" << toFindSumOfTenNumbers( number) << endl;
-}
-
-int main()
-{
-    toFindSumOfTenNumbersTest();
-    return 0;
-}
-
-
-
-
-
-
 //-----WITHOUT ARRAY:--------
 
 //----------------Pseudocode function:------------------------- 
 
 
-function toFindSumOfTenNumbers( int number[])
+function toFindSumOfTenNumbers( int number[]) -> int
    int sum = 0
 print "enter 10 numbers"
     for ( int i = 0; i < 10; i++)
