@@ -9,14 +9,6 @@ bool isDivisibleByThree(int number) {
     return false;
 }
 
-// Function to test isDivisibleByThree by printing the raw result
-void isDivisibleByThreeTest() {
-    int number;
-    cout << "Enter a number: ";
-    cin >> number;
-    bool result = isDivisibleByThree(number);
-    cout << result << endl;
-}
 
 // Function to test isDivisibleByThree with a descriptive message
 void isDivisibleByThreeTesttwo() {
@@ -25,7 +17,7 @@ void isDivisibleByThreeTesttwo() {
     cin >> number;
     bool result = isDivisibleByThree(number);
     if (result == true) {
-        cout << "The number is divisible by 3" << endl;
+        cout << "The number : " << number << " is divisible by 3" << endl;
     } else {
         cout << "The number is not divisible by 3" << endl;
     }
@@ -33,7 +25,7 @@ void isDivisibleByThreeTesttwo() {
 
 int main() {
     // Call both test functions
-    isDivisibleByThreeTest();
+
     isDivisibleByThreeTesttwo();
     return 0;
 }
