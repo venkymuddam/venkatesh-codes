@@ -81,6 +81,32 @@ function findTemperatureAverage(TemperatureSum->int , size ->int)->int
         return (TemperatureSum/size);
 end function
 
+function isOddTemperature(number -> int) -> bool
+
+    if (number % 2 != 0)
+        return true
+    else
+        return false
+    end if
+    
+end function
+
+function findSumOfOddTemperature(temperature->[int] , size ->int)->int
+
+    int oddSum = 0;
+    
+    for i from 0 ..size-1
+    
+        if (isOddTemperature(number))
+            oddSum = (oddSum + number)
+        end if
+        
+    end for
+    
+    return oddSum
+    
+end function
+
 
 
 
