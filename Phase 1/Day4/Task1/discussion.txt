@@ -31,7 +31,12 @@ function Test()
     TemperatureSum= findTemperatureSum(temperature->[int] , size ->int)->int
     averageTemperature = findTemperatureAverage(TemperatureSum, size)
     primeTemperatureSum = findPrimeTemperatureSum(temperature, size)
-    min3DigitTemperatureSum = findMin3DigitSum(temperature, size)
+
+    qualify[int]
+    int count= isNumberMinimum3Digit(temperatures, size, qualify);
+    min3DigitTemperatureSum = findMin3DigitSum(qualify, count)
+
+
     minimumTemperature = findMinTemperature(temperature, size)
     oddTemperatureSum = findSumOfOddTemperature(temperature , size)
     secondMaxOddTemperature = find2ndMaxOddTemperature(temperature, size)
@@ -108,5 +113,17 @@ function findSumOfOddTemperature(temperature->[int] , size ->int)->int
 end function
 
 
+function isNumberMinimum3Digit( temperature -> [int] , size -> int , qualify -> [int]) -> bool
+    count = 0
+    for i in temperatures
+        if ( temperatures[i] >= 100 )
+            qualify[count] = temperatures[i]
+            count++
+    return count
+            
 
+function findMin3DigitSum( qualify -> [int], count -> int ) ->int
+    for i in qualify
+        sum += qualify[i]
+    return sum
 
