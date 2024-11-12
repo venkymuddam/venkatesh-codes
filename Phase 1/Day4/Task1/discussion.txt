@@ -127,7 +127,7 @@ function findMin3DigitSum( qualify -> [int], count -> int ) ->int
         sum += qualify[i]
     return sum
 
-Hii I am Sreya
+
 
 
 
