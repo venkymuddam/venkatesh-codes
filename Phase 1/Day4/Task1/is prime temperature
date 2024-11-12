@@ -1,0 +1,12 @@
+// pseudo code
+function isPrimeTemperture(currentTemperature -> [int]) - bool
+
+    if (currentTemperature <= 1)
+        return false
+    end if
+    for (i = 2; i <= (currentTemperature / 2); i = i + 1)
+        if (currentTemperature % i == 0)
+            return false
+        end if
+    end for
+    return true
