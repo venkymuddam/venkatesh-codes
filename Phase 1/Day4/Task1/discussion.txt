@@ -214,3 +214,23 @@ function Test()
 
 pseudoMain 
     Test()
+
+
+
+
+
+------------------minhaj cpp---------------
+
+
+int findMinntemperatur(int temprature[],int size)
+{
+    int minTemp = INT_MAX;
+    for(int i =0;i<size;i++)
+    {
+         if(temperature[i] < minTemp)
+        {
+            minTemp = temperature[i];
+        }
+    }
+    return minTemp;
+}
