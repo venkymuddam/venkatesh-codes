@@ -24,38 +24,11 @@ function findMinTemperature(temperature->[int] , size ->int)->int
 function isOddTemperature(number -> int) -> bool
 function findSumOfOddTemperature(temperature->[int] , size ->int)->int
 function find2ndMaxOddTemperature(temperature->[int] , size ->int)->int
-function Test()
-    //temperature [int]
-    size=0
-    readTemperature(temperature, size)
-    TemperatureSum= findTemperatureSum(temperature->[int] , size ->int)->int
-    averageTemperature = findTemperatureAverage(TemperatureSum, size)
-    primeTemperatureSum = findPrimeTemperatureSum(temperature, size)
-
-    qualify[int]
-    int count= isNumberMinimum3Digit(temperatures, size, qualify);
-    min3DigitTemperatureSum = findMin3DigitSum(qualify, count)
-
-
-    minimumTemperature = findMinTemperature(temperature, size)
-    oddTemperatureSum = findSumOfOddTemperature(temperature , size)
-    secondMaxOddTemperature = find2ndMaxOddTemperature(temperature, size)
-    print averageTemperature
-    print primeTemperatureSum
-    print min3DigitTemperatureSum
-    print minimumTemperature
-    print oddTemperatureSum
-    print secondMaxOddTemperature
-    if isprime(minimumTemperature)
-         print "The minimum temperature is an prime number"
-    else
-         print "The minimum temperature is not a prime number"  
-
-pseudoMain 
-    Test()
 
 
 //--------------pseudocode------------------------
+
+----------Abel-------------------
 
 function readTemperature(temperatures->[int],size->int&)
        
@@ -86,6 +59,40 @@ function findTemperatureAverage(TemperatureSum->int , size ->int)->int
         return (TemperatureSum/size);
 end function
 
+
+----------------Venkatesh------------------------------
+
+
+function isPrimeTemperture(currentTemperature -> [int]) - bool
+
+    if (currentTemperature <= 1)
+        return false
+    end if
+    for (i = 2; i <= (currentTemperature / 2); i = i + 1)
+        if (currentTemperature % i == 0)
+            return false
+        end if
+    end for
+    return true
+
+
+function findPrimeTemperatureSum(temperatures -> [int], size -> [int]) -> [int]
+
+    initialize sum = 0
+    for (int i =0; i<size; i++)
+        currentTemperature = temperatures[i]
+
+        if (isPrimeTemperture(currentTemperature -> [int]) == true)
+            sum += currentTemperature
+        end if
+    end for
+
+    return sum
+
+
+----------------------Sreya---------------------------
+
+
 function isOddTemperature(number -> int) -> bool
 
     if (number % 2 != 0)
@@ -113,6 +120,10 @@ function findSumOfOddTemperature(temperature->[int] , size ->int)->int
 end function
 
 
+
+------------------------Sooraj--------------------------------------
+
+
 function isNumberMinimum3Digit( temperature -> [int] , size -> int , qualify -> [int]) -> bool
     count = 0
     for i in temperatures
@@ -130,7 +141,7 @@ function findMin3DigitSum( qualify -> [int], count -> int ) ->int
 
 
 
-
+------------------------Athira-----------------------------
 
 function find2ndMaxOddTemperature(temperatures[]-->int, size-->int)-->int
 
@@ -147,7 +158,7 @@ function find2ndMaxOddTemperature(temperatures[]-->int, size-->int)-->int
                 maxOdd = temperatures[i]
                 
             end if
-            else if (temperatures[i] > secondMaxOdd && arr[i] != maxOdd) 
+            else if (temperatures[i] > secondMaxOdd && temperatures[i] != maxOdd) 
             
                 secondMaxOdd = temperatures[i]
                 
@@ -163,6 +174,10 @@ function find2ndMaxOddTemperature(temperatures[]-->int, size-->int)-->int
      
      return secondMaxOdd
 
+
+------------------Minhaj---------------------------------
+
+
 function findMinTemperature(temperature->[int],size->int)->int
     minTemp = MAX_INT
     for i in teperature[]
@@ -170,29 +185,32 @@ function findMinTemperature(temperature->[int],size->int)->int
         minTemp = temperature[i]
 return minTemp
 
-// pseudo code
-function isPrimeTemperture(currentTemperature -> [int]) - bool
+function Test()
+    //temperature [int]
+    size=0
+    readTemperature(temperature, size)
+    TemperatureSum= findTemperatureSum(temperature->[int] , size ->int)->int
+    averageTemperature = findTemperatureAverage(TemperatureSum, size)
+    primeTemperatureSum = findPrimeTemperatureSum(temperature, size)
 
-    if (currentTemperature <= 1)
-        return false
-    end if
-    for (i = 2; i <= (currentTemperature / 2); i = i + 1)
-        if (currentTemperature % i == 0)
-            return false
-        end if
-    end for
-    return true
+    
+    int count= isNumberMinimum3Digit(temperatures, size, qualify);
+    min3DigitTemperatureSum = findMin3DigitSum(qualify, count)
 
-// pseudo code
-function findTemperatureSum(temperatures -> [int], size -> [int]) -> [int]
 
-    initialize sum = 0
-    for (int i =0; i<size; i++)
-        currentTemperature = temperatures[i]
+    minimumTemperature = findMinTemperature(temperature, size)
+    oddTemperatureSum = findSumOfOddTemperature(temperature , size)
+    secondMaxOddTemperature = find2ndMaxOddTemperature(temperature, size)
+    print averageTemperature
+    print primeTemperatureSum
+    print min3DigitTemperatureSum
+    print minimumTemperature
+    print oddTemperatureSum
+    print secondMaxOddTemperature
+    if isprime(minimumTemperature)
+         print "The minimum temperature is an prime number"
+    else
+         print "The minimum temperature is not a prime number"  
 
-        if (isPrimeTemperture(currentTemperature -> [int]) == true)
-            sum += currentTemperature
-        end if
-    end for
-
-    return sum
+pseudoMain 
+    Test()
