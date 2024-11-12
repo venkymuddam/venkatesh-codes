@@ -264,3 +264,32 @@ int findSumOfOddTemperature(int temperatures[] , int size)
     
     return oddSum;
 }
+
+int find2ndMaxOddTemperature(int temperatures[], int size)
+
+{
+int maxOdd = INT_MIN, secondMaxOdd = INT_MIN;
+     for(int i = 0;i < size; i++)
+     {
+         
+          if(isOddTemperature(number))
+          {
+
+            if (temperatures[i]> maxOdd) 
+            {
+                secondMaxOdd = maxOdd;
+                maxOdd = temperatures[i];
+            } 
+            else if (temperatures[i] > secondMaxOdd && temperatures[i] != maxOdd) 
+            {
+                secondMaxOdd = temperatures[i];
+            }
+          }
+     }
+     if (secondMaxOdd ==INT_MIN)
+     {
+         cout << " No second maximum odd temperature found " << endl;
+         return -1;
+     }
+     return secondMaxOdd;
+}
