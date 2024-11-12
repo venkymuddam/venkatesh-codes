@@ -132,7 +132,7 @@ int maxOdd = INT_MIN, secondMaxOdd = INT_MIN;
      }
      if (secondMaxOdd ==INT_MIN)
      {
-         cout << " No second maximum odd temperature found " << endl;
+         
          return -1;
      }
      return secondMaxOdd;
@@ -237,6 +237,11 @@ void Test()
                 cout << "Sum of Odd Temperatures is: " << sumOfOddTemperature << endl;
                 break;
             case 4:
+                if(secondMaximumOddTemperature == -1)
+                {
+                    cout << " No second maximum odd temperature found as there is only 1 odd prime" << endl;
+                    break;
+                }
                 cout << "Second Maximum Odd Temperature is: " << secondMaximumOddTemperature << endl;
                 break;
             case 5:

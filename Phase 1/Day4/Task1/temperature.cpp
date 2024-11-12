@@ -209,11 +209,21 @@ void Test()
     int minimumTemperature = findMinntemperature(temperatures , size);
     int secondMaximumOddTemperature      = find2ndMaxOddTemperature(temperatures , size);
     int sumOfPrimeTemperatureSum  =findPrimeTemperatureSum(temperatures , size);
-
+    
+     
     cout << "The Average Temperature is: " << averageTemperature << endl;
     cout << "Minimum Temperature is: " << minimumTemperature << endl;
     cout << "Sum of Odd Temperatures is: " << sumOfOddTemperature << endl;
-    cout << "Second Maximum of Odd Temperatures is: " << secondMaximumOddTemperature<< endl;
+
+    if(secondMaximumOddTemperature == -1)
+    {
+        cout << " No second maximum odd temperature found as there is only 1 odd prime" << endl;
+    }
+    else
+    {
+        cout << "Second Maximum of Odd Temperatures is: " << secondMaximumOddTemperature<< endl;  
+    }            
+    
     cout << "Sum of 3 Digits is: " << sum3Digit << endl;
     cout << "Sum of Prime Temperature is: " << sumOfOddTemperature <<endl;
     
