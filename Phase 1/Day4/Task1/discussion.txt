@@ -127,3 +127,10 @@ function findMin3DigitSum( qualify -> [int], count -> int ) ->int
         sum += qualify[i]
     return sum
 
+function findMinTemperature(temperature->[int],size->int)->int
+    minTemp = MAX_INT
+    for i in teperature[]
+        if temperature[i] < minTemp
+        minTemp = temperature[i]
+        return minTemp
+
