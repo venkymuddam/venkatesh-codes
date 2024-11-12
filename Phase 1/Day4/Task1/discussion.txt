@@ -90,7 +90,6 @@ function findPrimeTemperatureSum(temperatures -> [int], size -> [int]) -> [int]
     return sum
 
 
-
 ----------------------Sreya---------------------------
 
 
@@ -217,13 +216,55 @@ pseudoMain
     Test()
 
 
+------xxx---------xxx-------CPP CODE---------xxx------xxx------
+
+
+----------------------Abel---------------------
+
+
+void readTemperature(int temperatures[],int& size)
+{
+       int i=0; //for iteration
+       int currentTemperature=0;
+       do
+        {
+            
+         cout << "enter the patient's temperature " << (i+1) << ": ";
+         cin >> currentTemperature;
+            if (currentTemperature!=0)
+            {    ++size;
+                temperatures[i] = currentTemperature;
+                ++i;
+            }
+                
+        }
+          while(currentTemperature!=0); 
+          
+        
+ 
+}  
+int findTemperatureSum(int temperatures[] , int size )
+{
+    int sum = 0;
+    for (int i=0; i < size; i++)
+    {
+        sum += temperatures[i];
+    }
+    return sum;
+}
+
+int findTemperatureAverage(int temperatureSum , int size)
+{
+    return (temperatureSum/size);
+}
+
 
 
 
 ------------------minhaj cpp---------------
 
 
-int findMinntemperatur(int temprature[],int size)
+int findMinntemperature(int temprature[],int size)
 {
     int minTemp = INT_MAX;
     for(int i =0;i<size;i++)
@@ -236,6 +277,8 @@ int findMinntemperatur(int temprature[],int size)
     return minTemp;
 }
 
+
+-------------------Sreya-----------------------
 
 bool isOddTemperature(int number) 
 {
@@ -257,6 +300,7 @@ int findSumOfOddTemperature(int temperatures[] , int size)
     
     for (int i = 0; i <= size-1; i++)
     {    
+        number = temperatures[i];
         if (isOddTemperature(number))
         {
             oddSum = (oddSum + number);
@@ -265,6 +309,8 @@ int findSumOfOddTemperature(int temperatures[] , int size)
     
     return oddSum;
 }
+
+----------------------Athira---------------------
 
 int find2ndMaxOddTemperature(int temperatures[], int size)
 
@@ -295,9 +341,41 @@ int maxOdd = INT_MIN, secondMaxOdd = INT_MIN;
      return secondMaxOdd;
 }
 
+---------------------Sooraj---------------------
 
------------------------------venkatesh-------------------------
 
+int isNumberMinimum3Digit( int temperatures[] , int size, int qualify[])
+{
+    int count = 0;
+    for( int i = 0; i < size; i++)
+    {
+        if ( temperatures[i] >= 100 )
+        {
+            qualify[count] = temperatures[i];
+            count++;
+        }
+    }
+    return count;
+}
+            
+
+int findMin3DigitSum( int qualify[], int count )
+{   
+    int sum = 0;
+    for (int i = 0; i<count; i++)
+    {
+        sum += qualify[i];
+    }
+    return sum;
+}
+
+int qualify[MAX_SIZE];
+    int count= isNumberMinimum3Digit(temperatures, size, qualify);
+    int sum3Digit = findMin3DigitSum( qualify, count );
+    cout << sum3Digit;
+
+
+------------------------Venkatesh-------------------------------
 
 bool isPrimeTemperture(int currentTemperature)
 {
@@ -318,7 +396,7 @@ bool isPrimeTemperture(int currentTemperature)
 
 
 // c++ code for find Prime Temperature Sum
-int findTemperatureSum(int temperatures[], int size)
+int findPrimeTemperatureSum(int temperatures[], int size)
 {
     int sum = 0;
 
