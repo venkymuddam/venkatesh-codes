@@ -1,0 +1,13 @@
+// pseudo code
+function findTemperatureSum(temperatures -> [int], size -> [int]) -> [int]
+
+    initialize sum = 0
+    for (int i =0; i<size; i++)
+        currentTemperature = temperatures[i]
+
+        if (isPrimeTemperture(currentTemperature -> [int]) == true)
+            sum += currentTemperature
+        end if
+    end for
+
+    return sum
