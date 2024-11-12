@@ -90,6 +90,49 @@ function findPrimeTemperatureSum(temperatures -> [int], size -> [int]) -> [int]
     return sum
 
 
+
+
+// c++ code 
+
+bool isPrimeTemperture(int currentTemperature)
+{
+    if (currentTemperature <= 1)
+    {
+        return false;
+    }
+    
+    for (int i = 2; i <= sqrt(currentTemperature); i++)
+    {
+        if (currentTemperature % i == 0)
+        {
+            return false;
+        }
+    }
+    return true;
+} 
+
+
+// c++ code for find Prime Temperature Sum
+int findTemperatureSum(int temperatures[], int size)
+{
+    int sum = 0;
+
+    for (int i = 0; i < size; i++)
+    {
+        int currentTemperature = temperatures[i];
+
+        if (isPrimeTemperture(currentTemperature) == true)
+        {
+            sum += currentTemperature;
+        }
+    }
+
+    return sum;
+}
+
+
+
+
 ----------------------Sreya---------------------------
 
 
