@@ -127,3 +127,34 @@ function findMin3DigitSum( qualify -> [int], count -> int ) ->int
         sum += qualify[i]
     return sum
 
+function find2ndMaxOddTemperature(temperatures[]-->int, size-->int)-->int
+
+  maxOdd = INT_MIN
+    secondMaxOdd = INT_MIN
+    
+     for i from 0...size
+     
+         if(isOddTemperature(number))
+          
+            if (temperatures[i]> maxOdd) 
+            
+                secondMaxOdd = maxOdd
+                maxOdd = temperatures[i]
+                
+            end if
+            else if (temperatures[i] > secondMaxOdd && arr[i] != maxOdd) 
+            
+                secondMaxOdd = temperatures[i]
+                
+            end elseif
+        end if
+    end for
+    
+     if (secondMaxOdd == INT_MIN)
+     
+          print " No second maximum odd temperature found " 
+          return -1
+     end if
+     
+     return secondMaxOdd
+
