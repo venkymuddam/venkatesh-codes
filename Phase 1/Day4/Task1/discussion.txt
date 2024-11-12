@@ -168,5 +168,5 @@ function findMinTemperature(temperature->[int],size->int)->int
     for i in teperature[]
         if temperature[i] < minTemp
         minTemp = temperature[i]
-        return minTemp
+return minTemp
 
