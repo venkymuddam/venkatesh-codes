@@ -170,3 +170,29 @@ function findMinTemperature(temperature->[int],size->int)->int
         minTemp = temperature[i]
 return minTemp
 
+// pseudo code
+function isPrimeTemperture(currentTemperature -> [int]) - bool
+
+    if (currentTemperature <= 1)
+        return false
+    end if
+    for (i = 2; i <= (currentTemperature / 2); i = i + 1)
+        if (currentTemperature % i == 0)
+            return false
+        end if
+    end for
+    return true
+
+// pseudo code
+function findTemperatureSum(temperatures -> [int], size -> [int]) -> [int]
+
+    initialize sum = 0
+    for (int i =0; i<size; i++)
+        currentTemperature = temperatures[i]
+
+        if (isPrimeTemperture(currentTemperature -> [int]) == true)
+            sum += currentTemperature
+        end if
+    end for
+
+    return sum
