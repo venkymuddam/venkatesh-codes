@@ -2,9 +2,119 @@
 
 //-----------------pseudocode--------------------------------
 
+                      ----------------------venkatesh--------------------------
+// pseudo code for fibonacci series 
+function fibonacciNumbers(n -> [int], arrStore -> [int]) -> null
+    if (n >= 1)
+        arrStore[0] = 0
+    end if
+    
+    if (n >= 2)
+        arrStore[1] = 1
+    end if
+    
+    first = 0
+    second = 1
+    next
+    
+    for (i = 3; i <= n; i++)
+        next = first + second
+        arrStore[i-1] = next
+        first = second
+        second = next
+    end for
+end fibonacciNumbers
 
+function fibonacciNumbersTest(void)
+    input n
+    
+    if (n < 1)
+        print "Please enter a positive integer." 
+        return
+    end if
+    
+    if (n > MAX_SIZE)
+        print "Please enter a number less than or equal to " << MAX_SIZE << "." 
+        return
+    end if
+    
+    int arrStore[MAX_SIZE] = {}
+    
+    fibonacciNumbers(n, arrStore)
+    
+    for (i = 0; i < n; i++)
+        print arrStore[i] 
+    end for
+end fibonacciNumbersTest
 
+start 
+main()
+    fibonacciNumbersTest()
+
+    return EXIT_SUCCESS
+end 
 
 
 
 //---------------------program------------------------------
+
+              ---------------------------venkatesh----------------
+
+// c++ code for fibonacci series
+#include <iostream>
+#include<cstdlib>
+#define MAX_SIZE 100
+using std::cout;
+using std::cin;
+using std::endl;
+
+void fibonacciNumbers(int n, int arrStore[]) 
+{
+    if (n >= 1) {
+        arrStore[0] = 0;
+    }
+    if (n >= 2) {
+        arrStore[1] = 1;
+    }
+
+    int first = 0, second = 1, next;
+
+    for (int i = 3; i <= n; i++) {
+        next = first + second;
+        arrStore[i-1] = next;
+        first = second;
+        second = next;
+    }
+}
+
+void fibonacciNumbersTest(void) 
+{
+    int n;
+    cout << "Enter the number of terms : ";
+    cin >> n;
+
+    if (n < 1) {
+        cout << "Please enter a positive integer." << endl;
+        return;
+    }
+    if (n > MAX_SIZE) {
+        cout << "Please enter a number less than or equal to " << MAX_SIZE << "." << endl;
+        return;
+    }
+    
+    int arrStore[MAX_SIZE] = {};
+
+    fibonacciNumbers(n, arrStore);
+
+    for (int i = 0; i < n; i++) 
+    {
+        cout << arrStore[i] << endl;
+    }
+    
+}
+
+int main(void) {
+    fibonacciNumbersTest();
+
+    return EXIT_SUCCESS;
+}
