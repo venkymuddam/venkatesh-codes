@@ -1,0 +1,10 @@
+//venketesh should combine all the files into this
+
+//-----------------pseudocode--------------------------------
+
+
+
+
+
+
+//---------------------program------------------------------
