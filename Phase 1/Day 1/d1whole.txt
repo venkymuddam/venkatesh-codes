@@ -23,6 +23,47 @@ start
    isDivisibleBy3Test()
 end
 
+
+//------------------program---------
+
+// c++ code
+#include<iostream>
+#include<cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+bool isDivisibleBy3(int number) 
+{
+    return (number % 3 == 0);
+}
+
+void isDivisibleBy3Test(void) 
+{
+    int number;
+    cout << "Enter the number : ";
+    cin >> number;
+
+    bool result = isDivisibleBy3(number);
+
+    if (result) 
+    {
+        cout << "The number " << number << " is divisible by 3." << endl;
+    } 
+    else 
+    {
+        cout << "The number " << number << " is not divisible by 3." << endl;
+    }
+}
+
+int main() 
+{
+    isDivisibleBy3Test();
+
+    return EXIT_SUCCESS;
+}
+
+
 -----------------------------------------------------------Question 6-----------------------------------------------
 
 //Check a number is divisible by 27 or not
@@ -237,6 +278,8 @@ int main(void)
     
 
 -------------------------------question17------------------------------
+
+
 function fibonacciNumbers(n -> [int], arrStore -> [int]) -> null
     if (n >= 1)
         arrStore[0] = 0
@@ -291,47 +334,6 @@ end
 
 //---------------------program------------------------------
 
----------------------------question 5----------------------------
-
-// c++ code
-#include<iostream>
-#include<cstdlib>
-using std::cout;
-using std::cin;
-using std::endl;
-
-bool isDivisibleBy3(int number) 
-{
-    return (number % 3 == 0);
-}
-
-void isDivisibleBy3Test(void) 
-{
-    int number;
-    cout << "Enter the number : ";
-    cin >> number;
-
-    bool result = isDivisibleBy3(number);
-
-    if (result) 
-    {
-        cout << "The number " << number << " is divisible by 3." << endl;
-    } 
-    else 
-    {
-        cout << "The number " << number << " is not divisible by 3." << endl;
-    }
-}
-
-int main() 
-{
-    isDivisibleBy3Test();
-
-    return EXIT_SUCCESS;
-}
-
-
------------------------------question 17-----------------------------
 
 // c++ code for fibonacci series
 #include <iostream>
