@@ -2,6 +2,7 @@
 //-----------------pseudocode--------------------------------
 
 ------------------------------question 5--------------------------------
+to check the number is divisible by 3
 // pseudo code
 function isDivisibleBy3(number)
     return (number % 3 == 0)
