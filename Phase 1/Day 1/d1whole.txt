@@ -23,6 +23,219 @@ start
    isDivisibleBy3Test()
 end
 
+-----------------------------------------------------------Question 6-----------------------------------------------
+
+//Check a number is divisible by 27 or not
+
+Pseudo functions:
+
+function isDivisibleByTwentySeven(number->int)->bool
+
+    if (number MOD 27 == 0)
+        return true
+    endif
+
+    return false
+	
+function isDivisibleByTwentySevenTest()
+    input number
+
+    result=isDivisibleByTwentySeven(number)
+	
+    if result
+        print"The number is divisible by 27"
+    else
+        print"The number is not divisible by 27"
+
+Pseudocode:
+
+isDivisibleByTwentySevenTest()
+
+CODE:
+
+#include<iostream>
+using std::cout;
+using std::cin;
+
+bool isDivisibleByTwentySeven(int number)
+{
+    if(number % 27 == 0)
+    {
+        return true;
+    }
+    
+    return false;
+}
+
+void isDivisibleByTwentySevenTest(void)
+{
+    int number;
+	
+    cout<< "Enter a Number:";
+    cin>> number;
+	
+    int result=isDivisibleByTwentySeven(number);
+    
+    if(result)
+    {
+        cout<< "The number is divisible by 27";
+    }
+    else
+    {
+        cout<< "The number is not divisible by 27";
+    }
+}
+
+int main(void)
+{
+    isDivisibleByTwentySevenTest();
+	
+    return 0;
+}
+
+-----------------------------------------------------------Question 11--------------------------------------------------
+
+//check a number is perfect or not
+
+Pseudofunctions:
+
+function isPerfectNumber(number->int)->bool
+  sum = 0
+    
+  half = (number / 2)
+ 	
+  for i from 1 ..half
+ 	if (number % i == 0)
+ 	    sum = (sum + i)
+      endif
+  endfor
+ 	
+  return (sum == number)
+ 	
+function isPerfectNumberTest()
+ 
+    input number
+ 	  bool result = isPerfectNumber(number)
+ 	
+ 	  if (result)
+ 	      print "The number is perfect"
+ 	  else
+ 	      print "The number is not perfect"
+ 	  endif
+ 	
+Pseudocode:
+
+    isPerfectNumberTest()
+
+
+#include<iostream>
+using std::cout;
+using std::cin;
+
+
+bool isPerfectNumber(int number)
+{
+    int sum = 0;
+    
+    int half = (number / 2);
+ 	
+ 	for (int i = 1 ; i <= half ; i++)
+ 	{
+ 	    if (number % i == 0)
+ 	    {
+ 	       sum = (sum + i);
+ 	    }
+ 	}
+ 	
+ 	return (sum == number);
+}
+
+void isPerfectNumberTest(void)
+{
+    int number;
+    
+    cout << "Enter a number:";
+    cin >> number;
+    
+ 	bool result = isPerfectNumber(number);
+ 	
+ 	if (result)
+ 	{
+ 	    cout << number << " is a perfect number";
+ 	}
+ 	else
+ 	{
+ 	    cout << number << " is not a perfect number";
+ 	}
+}
+
+int main(void)
+{
+    isPerfectNumberTest();
+ 
+    return 0;
+}
+ 
+
+--------------------------------------------------------Question 12--------------------------------------------
+
+//check odd or even
+
+Pseudo functions:
+
+function isEven(number->int)->bool
+    return (number % 2 == 0) 
+	
+function isEvenTest()
+
+    input number
+
+    if (isEven(number))
+	print "The number is even"
+    else
+	print "The number is odd"
+    endif
+	
+pseudocode:
+
+isEvenTest()
+
+CODE:
+
+#include<iostream>
+using std::cin;
+using std::cout;
+
+bool isEven(int number)
+{
+    return ((number % 2) == 0);
+}
+
+void isEvenTest(void)
+{
+    int number;
+    
+    cout << "Enter a number:";
+    cin >> number;
+    
+    if (isEven(number))
+    {
+	cout << number << " is even";
+    }
+    else
+    {
+	cout << number << " is odd";
+    }
+}
+
+int main(void)
+{
+    isEvenTest();
+    
+    return 0;
+}
+    
+
 -------------------------------question17------------------------------
 function fibonacciNumbers(n -> [int], arrStore -> [int]) -> null
     if (n >= 1)
