@@ -595,6 +595,91 @@ int main(void)
 
 
 
+--------------------------------------- Question 24 -----------------------------------
+program to check whether the strings are anagram.
+
+---------------Pseudocode:-------------------------------------
+
+function isAnagram(str1 --> string, str2 --> string) --> boolean
+
+    if length of str1 != length of str2 then
+        return false
+    end if
+
+   
+    sort str1
+    sort str2
+
+
+    if str1 == str2 then
+        return true
+    else
+        return false
+    end if
+
+end function
+
+function isAnagramTest()
+
+    input str1
+    input str2
+
+    result = isAnagram(str1, str2)
+
+    if result == true then
+        print "The strings are anagrams."
+    else
+        print "The strings are not anagrams."
+    end if
+
+end function
+
+function main()
+
+    isAnagramTest()
+    return 0
+
+end function
+
+
+---------------Program-----------------------------------------
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+bool isAnagram(string str1, string str2) {
+    // If lengths are not equal, they cannot be anagrams
+    if (str1.length() != str2.length()) {
+        return false;
+    }
+
+    // Sort both strings
+    sort(str1.begin(), str1.end());
+    sort(str2.begin(), str2.end());
+
+    // Compare the sorted strings
+    return str1 == str2;
+}
+
+int main() {
+    string str1, str2;
+    cout << "Enter first string: ";
+    cin >> str1;
+    cout << "Enter second string: ";
+    cin >> str2;
+
+    if (isAnagram(str1, str2)) {
+        cout << "The strings are anagrams." << endl;
+    } else {
+        cout << "The strings are not anagrams." << endl;
+    }
+
+    return 0;
+}
+
+
 --------------------------------------- Question 27-----------------------------------
 
 
