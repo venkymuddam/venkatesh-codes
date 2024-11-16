@@ -219,4 +219,102 @@ int main(void)
 }
 
 
+-----------------------------------Question 21---------------------------------------------------
 
+to sort the elements in a array
+
+pseudofunction
+
+function sortelement( arr -> [int], size -> int) -> [int]
+	int element
+	for i from 0 to size-1
+		enter the input
+		arr[i] = element
+	for i from 0 to size-1
+		for j from i+1 to size-1
+			if arr[i] > arr[j]
+				temp = arr[i]
+				arr[i] = arr[j]
+				arr[j] = temp
+	return arr
+
+function sortelementtest()
+	int arr
+	size = 5
+	sortelement()
+
+	sorted array
+	for i from 0 to size-1
+		arr[i]
+	
+
+pseudocode
+
+sortelementtest();
+
+
+
+C++ code		
+
+
+#include <iostream>
+using namespace std;
+
+int* sortelement( int arr[], int size)
+{
+	int element;
+	for ( int i = 0; i < size; i++ )
+	{
+		cout << "enter the elements " << i + 1 << " : ";
+		cin >> element;
+		arr[i] = element;
+	}
+	for ( int i = 0; i < size; i++ )
+	{
+	    	for ( int j = i + 1; j < size; j++ )
+	    	{
+	    	    if (  arr[i] > arr[j])
+	    	    {
+	    	        int temp = arr[i];
+	    	        arr[i] = arr[j];
+	    	        arr[j] = temp;
+	    	    }
+	    	}
+
+	}
+	return arr;
+}
+
+void sortelementtest()
+{
+	int size = 5;
+	int arr[ size ];
+	sortelement(arr, size);
+	
+	cout << "Sorted array";
+    for ( int i = 0; i < size; i++)
+    {
+        cout << arr[i] << " ";
+    }
+	
+}
+
+
+
+
+int main(void)
+{
+    sortelementtest();
+    
+    return 0;
+}
+
+
+
+
+int main(void)
+{
+    sortelementtest();
+    
+    return 0;
+}
