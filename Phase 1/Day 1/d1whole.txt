@@ -1,11 +1,29 @@
 
-------------------------------Question 17--------------------------------
-//venketesh should combine all the files into this
-
 //-----------------pseudocode--------------------------------
 
-                      ----------------------venkatesh--------------------------
-// pseudo code for fibonacci series 
+------------------------------question 5--------------------------------
+// pseudo code
+function isDivisibleBy3(number)
+    return (number % 3 == 0)
+end function
+
+function isDivisibleBy3Test()
+    input number
+
+    result = isDivisibleBy3(number)
+
+    if result
+        print "The number", number, "is divisible by 3."
+    else
+        print "The number", number, "is not divisible by 3."
+    end if
+end function
+
+start
+   isDivisibleBy3Test()
+end
+
+-------------------------------question17------------------------------
 function fibonacciNumbers(n -> [int], arrStore -> [int]) -> null
     if (n >= 1)
         arrStore[0] = 0
@@ -60,7 +78,47 @@ end
 
 //---------------------program------------------------------
 
-              ---------------------------venkatesh----------------
+---------------------------question 5----------------------------
+
+// c++ code
+#include<iostream>
+#include<cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+bool isDivisibleBy3(int number) 
+{
+    return (number % 3 == 0);
+}
+
+void isDivisibleBy3Test(void) 
+{
+    int number;
+    cout << "Enter the number : ";
+    cin >> number;
+
+    bool result = isDivisibleBy3(number);
+
+    if (result) 
+    {
+        cout << "The number " << number << " is divisible by 3." << endl;
+    } 
+    else 
+    {
+        cout << "The number " << number << " is not divisible by 3." << endl;
+    }
+}
+
+int main() 
+{
+    isDivisibleBy3Test();
+
+    return EXIT_SUCCESS;
+}
+
+
+-----------------------------question 17-----------------------------
 
 // c++ code for fibonacci series
 #include <iostream>
