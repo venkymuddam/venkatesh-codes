@@ -105,6 +105,94 @@ int main(void)
     return 0;
 }
 
+------------------------------------------------Question 3------------------------------------------
+// to find square of the number.
+// pseudo code
+pseudofunction:
+
+findSquare(number -> int) -> int
+	return number * number
+
+findSquareTest() 
+	input number
+	square = findSquare(number)
+	print square
+
+findSquareTest()
+
+// c++ code
+#include <iostream>
+using namespace std;
+
+int findSquare(int number) {
+    return number * number;
+}
+
+void findSquareTest() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+
+    int square = findSquare(number);
+
+    cout << "Square is: " << square << endl;
+}
+
+int main() {
+    findSquareTest(); 
+    return 0;
+}
+
+
+
+------------------------------------------------Question 4------------------------------------------
+// swap two numbers. 
+// pseudo code
+
+pseudofunction:
+function swapNums(&number1,&number2)
+	temp = number1
+	number1 = number2
+	number2 = temp
+	
+function swapNumsTest()
+	input number1,number2
+	swapNums(number1,number2)
+	print number1,number2
+
+swapNumsTest()
+
+// c++ code
+#include <iostream>
+using namespace std;
+
+void swapNums(int &num1,int &num2){
+    int temp=num1;
+    num1=num2;
+    num2=temp;
+}
+
+void swapNumsTest(){
+    int num1,num2;
+    cout << "Enter number 1:";
+    cin >> num1;
+    cout << "Enter number 2:";
+    cin >> num2;
+    swapNums(num1,num2);
+    cout << "Number 1:" << num1;
+    cout << "\nNumber 2:" << num2;
+}
+
+
+int main()
+{
+    swapNumsTest();
+
+    return 0;
+}
+
+
+
 ---------------------------------------------Question 5-------------------------------------------
 to check the number is divisible by 3
 // pseudo code
@@ -377,6 +465,176 @@ void isNumberPalindromeTest(void)
 int main(void)
 {
     isNumberPalindromeTest();
+    
+    return 0;
+}
+
+
+------------------------------------------------Question 9------------------------------------------
+
+// to check a number amstrong. 
+// pseudo code
+
+pseudo function:
+
+function isArmstrong(number -> int) -> bool
+	copyNumber = number
+	int counter = 0
+	while copyNumber > 0
+		copyNumber = copyNumber/10
+		counter = counter + 1
+	end while
+	copyNumber = number
+	int sum = 0
+	while copyNumber > 0
+		temp = copyNumber % 10
+		sum = sum + temp^counter
+		copyNumber = copyNumber / 10
+	end while
+	if sum == number
+		return true
+	return false
+
+function isArmstrongTest(){
+	input number
+	bool result = isArmStrong(number)
+	if result == true
+		print "Armstrong"
+	else
+		print "Not Armstrong"
+	end if
+}
+
+isArmStrongTest()
+
+
+// c++ code
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool swapNums(int number){
+    int copyNumber=number;
+    int counter=0;
+    while (copyNumber>0){
+        copyNumber = copyNumber/10;
+		counter = counter + 1;
+    }
+    copyNumber = number;
+	int sum = 0;
+	while (copyNumber > 0){
+		int temp = copyNumber % 10;
+		sum = sum + (int)pow(temp,counter);
+		copyNumber = copyNumber / 10;
+	}
+	if (sum == number){
+		return true;
+	}
+	return false;
+}
+
+void isArmstrongTest(){
+    int num;
+    cout << "Enter number:";
+    cin >> num;
+    bool result=swapNums(num);
+    if (result ==true){
+        cout << "Armstrong number";
+    }
+    else{
+        cout << "Not Armstrong";
+    }
+}
+
+int main()
+{
+    isArmstrongTest();
+    return 0;
+}
+------------------------------------------------Question 10------------------------------------------
+
+// to check a number prime.
+// pseudo code
+
+pseudofunction:
+
+function isPrime(number -> int) -> bool
+	if (number < 2)
+		return false
+	end if
+
+	int squareRoot = sqrt(number)
+
+	for i in (2..squareRoot)
+		if (number % i) == 0
+			return false
+		end if
+	end for
+	
+	return true
+	
+function isPrimeTest(void) -> void
+	input number
+
+	if (isPrime(number))
+		print "Number is prime"
+	else
+		print "Number isn't prime"
+	end if
+
+pseudocode:
+
+isPrimeTest()
+
+
+// c++ code
+
+#include<iostream>
+#include<cmath>
+using std::cout;
+using std::cin;
+
+bool isPrime(int number)
+{
+	if (number < 2)
+	{
+		return false;
+	}
+	
+	int squareRoot = (int)sqrt(number);
+
+	for (int i = 2; i <= squareRoot; i ++)
+	{
+		if ((number % i) == 0)
+		{
+			return false;
+		}
+	}
+	
+	return true;
+}
+	
+void isPrimeTest(void)
+{
+    int number;
+    
+	cout << "Enter a number: ";
+	cin >> number;
+
+	if (isPrime(number))
+	{
+		cout << number << " is prime";
+	}
+	else
+	{
+		cout << number << " isn't prime";
+	}
+}
+
+int main(void)
+{
+    isPrimeTest();
     
     return 0;
 }
@@ -658,7 +916,77 @@ int main(void)
     	return 0;
 }
 
+------------------------------------------------Question 15------------------------------------------
 
+
+------------------------------------------------Question 16------------------------------------------
+
+// Factorials of the number.
+// pseudo code
+
+pseudo functions:
+
+function factorial(number-> int) -> int
+    if (number < 0)
+        return -1
+
+    int result = 1
+
+    for int i = 1...number              
+        result= (result * i)            
+    end for
+    
+    return result
+
+function factorialTest(void) -> void
+    input number
+    int result = factorial(number)
+
+    if (result == -1)
+        print("Invalid number")
+    else
+        print("Factorial is" result)
+
+factorialTest()
+
+
+// c++ code
+
+#include <iostream>
+using namespace std;
+
+int factorial(int number) {
+    if (number < 0) {
+        return -1; 
+    }
+
+    int result = 1;
+
+    for (int i = 1; i <= number; i++) {
+        result *= i;
+    }
+
+    return result;
+}
+
+void factorialTest() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+
+    int result = factorial(number);
+
+    if (result == -1) {
+        cout << "Invalid number" << endl;
+    } else {
+        cout << "Factorial is " << result << endl;
+    }
+}
+
+int main() {
+    factorialTest(); 
+    return 0;
+}
 
 --------------------------------------------------------------Question17---------------------------------------------------
 
@@ -713,9 +1041,6 @@ main()
 
     return EXIT_SUCCESS
 end 
-
-//---------------------program------------------------------
-
 
 // c++ code for fibonacci series
 #include <iostream>
@@ -956,6 +1281,79 @@ int main(void)
 
 
 
+------------------------------------------------Question 20------------------------------------------
+
+// to find the largest number from array. 
+// pseudo code
+
+pseudo function:
+
+function findLargest(array -> int[], size -> int) -> int
+    set largest = array[0]
+    for i from 1 to size-1
+        if array[i] > largest then
+            set largest = array[i]
+        endif
+    endfor
+    return largest
+end function
+
+function findLargestTest()
+    input size
+    declare array[size]
+    for i from 0 to size-1
+        input array[i]
+    endfor
+    largest = findLargest(array, size)
+    print largest
+end function
+
+pseudocode:
+
+	findLargestTest()
+
+
+// c++ code
+
+#include <iostream>
+using namespace std;
+
+// Function to find the largest number in an array
+int findLargest(int array[], int size) {
+    int largest = array[0];
+    for (int i = 1; i < size; i++) {
+        if (array[i] > largest) {
+            largest = array[i];
+        }
+    }
+    return largest;
+}
+
+// Function to test the findLargest function
+void findLargestTest() {
+    int size;
+    cout << "Enter the size of the array: ";
+    cin >> size;
+
+    int array[size];
+    cout << "Enter the elements of the array: ";
+    for (int i = 0; i < size; i++) {
+        cin >> array[i];
+    }
+
+    int largest = findLargest(array, size);
+    
+    cout << "Largest element in the array: " << largest << endl; 
+}
+
+int main() {
+    findLargestTest();
+    return 0;
+}
+
+
+
+
 ----------------------------------------------------------Question 21---------------------------------------------------
 
 //To sort the elements in an array
@@ -1104,6 +1502,95 @@ int main(void)
     return 0;
 }
 
+------------------------------------------------Question 23------------------------------------------
+
+// to display the duplicate numbers in the array. [Josh]
+// pseudo code
+
+pseudo function:
+
+function findDuplicates(array -> list of int, size -> int) -> void
+    print "Duplicate numbers in the array are: "
+    set hasDuplicates to false
+
+    for i from 0 to size - 2
+        for j from i + 1 to size - 1
+            if array[i] == array[j]
+                print array[i]
+                set hasDuplicates to true
+                break // Skip additional duplicates of the same number
+            end if
+        end for
+    end for
+
+    if hasDuplicates is false
+        print "None"
+    end if
+
+function findDuplicatesTest() -> void
+    input size
+    declare array of size
+
+    print "Enter the elements of the array: "
+    for i from 0 to size - 1
+        input array[i]
+    end for
+
+    call findDuplicates(array, size)
+
+
+pseudocode:
+    findDuplicatesTest()
+
+
+// c++ code
+
+#include <iostream>
+using namespace std;
+
+// Function to find and display duplicates in an array
+void findDuplicates(int array[], int size) {
+    cout << "Duplicate numbers in the array are: ";
+    bool hasDuplicates = false;
+
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = i + 1; j < size; j++) {
+            if (array[i] == array[j]) {
+                cout << array[i] << " ";
+                hasDuplicates = true;
+                break; // Skip additional duplicates of the same number
+            }
+        }
+    }
+
+    if (!hasDuplicates) {
+        cout << "None";
+    }
+
+    cout << endl;
+}
+
+// Function to test the findDuplicates function
+void findDuplicatesTest() {
+    int size;
+    cout << "Enter the size of the array: ";
+    cin >> size;
+
+    int array[size];
+    cout << "Enter the elements of the array: ";
+    for (int i = 0; i < size; i++) {
+        cin >> array[i];
+    }
+
+    findDuplicates(array, size);
+}
+
+int main() {
+    findDuplicatesTest();
+    return 0;
+}
+
+
 ------------------------------------------------------- Question 24 -------------------------------------------------
 program to check whether the strings are anagram.
 
@@ -1241,6 +1728,100 @@ int main(void)
     	return 0;
 }
 
+------------------------------------------------Question 26------------------------------------------
+
+// to delete duplicates strings in sting list. 
+// pseudo code
+
+pseudo functions:
+function removeDuplicates(strings -> list of string, size -> int) -> int
+    for i from 0 to size - 1
+        for j from i + 1 to size - 1
+            if strings[i] == strings[j]
+                // Shift elements to the left
+                for k from j to size - 2
+                    strings[k] = strings[k + 1]
+                end for
+                size = size - 1 // Reduce the size of the list
+                j = j - 1       // Adjust index to check the next element
+            end if
+        end for
+    end for
+
+    return size
+
+function removeDuplicatesTest() -> void
+    input size
+    declare array strings of size
+
+    print "Enter the strings: "
+    for i from 0 to size - 1
+        input strings[i]
+    end for
+
+    size = call removeDuplicates(strings, size)
+
+    print "Strings after removing duplicates: "
+    for i from 0 to size - 1
+        print strings[i] with space
+    end for
+    print newline
+	
+
+pseudo code:
+	removeDuplicatesTest()
+
+// c++ code
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Function to remove duplicate strings from a list
+int removeDuplicates(string strings[], int size) {
+    for (int i = 0; i < size; i++) {
+        for (int j = i + 1; j < size; j++) {
+            if (strings[i] == strings[j]) {
+                // Shift elements to the left
+                for (int k = j; k < size - 1; k++) {
+                    strings[k] = strings[k + 1];
+                }
+                size--; // Reduce the size of the list
+                j--;    // Adjust index to check the next element
+            }
+        }
+    }
+    return size;
+}
+
+// Function to test the removeDuplicates function
+void removeDuplicatesTest() {
+    int size;
+    cout << "Enter the number of strings: ";
+    cin >> size;
+
+    string strings[size];
+    cout << "Enter the strings: ";
+    for (int i = 0; i < size; i++) {
+        cin >> strings[i];
+    }
+
+    size = removeDuplicates(strings, size);
+
+    cout << "Strings after removing duplicates: ";
+    for (int i = 0; i < size; i++) {
+        cout << strings[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    removeDuplicatesTest();
+    return 0;
+}
+
+
+
 -------------------------------------------------------- Question 27---------------------------------------------------
 
 
@@ -1326,6 +1907,68 @@ int main(void)
      countVowelsTest();
      return 0;
 }
+
+------------------------------------------------Question 28------------------------------------------
+
+// to count whitespaces in a sentence.  
+// pseudo code
+
+pseudo functions:
+
+function countWhiteSpaces(sentence -> string) -> int
+    initialize whitespaceCount to 0
+
+    for each character in sentence
+        if character is a whitespace
+            increment whitespaceCount
+        end if
+    end for
+
+    return whitespaceCount
+
+function countWhiteSpacesTest(void)-> void
+	initialize string sentence 
+	input sentence
+	int count = countWhiteSpaces(sentence)
+	print count
+
+pseudo code:
+	countWhiteSpacesTest()
+
+// c++ code
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int countWhitespaces(const string& sentence) {
+    int whitespaceCount = 0;
+
+    for (char c : sentence) {
+        if (isspace(c)) {
+            whitespaceCount++;
+        }
+    }
+
+    return whitespaceCount;
+}
+
+void testCountWhitespaces() {
+    string sentence;
+    cout << "Enter a sentence: ";
+    getline(cin, sentence);
+
+    int count = countWhitespaces(sentence);
+
+    cout << "Number of whitespaces: " << count << endl;
+}
+
+int main() {
+    testCountWhitespaces();
+    return 0;
+}
+
+
 
 //------------------------------------------------Question 29-----------------------------------------------------
 
