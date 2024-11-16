@@ -138,11 +138,14 @@ INSERT INTO meal VALUES (2, 'Chicken Meal', 500);
 INSERT INTO meal VALUES (3, 'Coffee', 100);
 
 Insert into booking
-
-INSERT INTO booking VALUES (1, 'B001', 'AI102', TO_DATE('2024-11-20', 'YYYY-MM-DD'), 
-    '10:00 AM', '1:00 PM', 'Chennai', 'Delhi', 15000, 'Economy', 1, 1);
+select * from booking;
+desc booking;
 INSERT INTO booking VALUES (2, 'B002', 'SG345', TO_DATE('2024-11-22', 'YYYY-MM-DD'), 
     '5:00 PM', '7:00 PM', 'Bangalore', 'Mumbai', 16000, 'Business', 2, 2);
+
+
+INSERT INTO booking VALUES (1, 'B001', 'SG305', TO_DATE('2024-11-18', 'YYYY-MM-DD'), 
+    '4:00 PM', '8:00 PM', 'Bangalore', 'Kochi', 14000, 'Business', 1, 1);
 
 Insert into booking_seat
 
@@ -216,14 +219,14 @@ meal_id	meal_name	price	quantity	amount	booking_id
 1	Veg Meal	300	1	300	2
 2	Chicken Meal	500	2	1000	2
 
---------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
-"I have booked tickets using my Aadhaar ID.
+I have booked tickets using my Aadhaar ID.
 
     I watched Flight AI102 on 20-Nov-2024 at 10:00 AM.
     I watched Flight SG345 on 22-Nov-2024 at 5:00 PM.
 
---------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 Step 1: Alter Table Script
 
@@ -269,19 +272,19 @@ booking_id	booking_number	movie_name	about_movie	show_date_time	aadhaar_id	numbe
 
 
 
+//---------------------------------------------------------------------------------------------------------------------
 
-
-"I have booked tickets for my family. Only 3 tickets for Rubber Ball movie at Star Theatre. [Use the ticket numbers and price from the ticket table].
+I have booked tickets for my family. Only 3 tickets for Rubber Ball movie at Star Theatre. [Use the ticket numbers and price from the ticket table].
 
 I also bought two samosas and three pop korn.
 
 Please book this ticket as a single transaction in Oracle with exception handling.
 
     If data is readable from the master table, read and use it.
-    If data is computable, compute and update the table during the transaction."
+    If data is computable, compute and update the table during the transaction.
 
 
-
+//-------------------------------------------------------------------------------------------------------
 
 
 Step 1: Set Up Master Tables
@@ -339,93 +342,214 @@ CREATE TABLE booking_food (
     FOREIGN KEY (food_item_id) REFERENCES food(item_id)
 );
 
-Step 2: Booking Transaction with Exception Handling
+//Retrieve Complete Booking Details
+
+SELECT 
+    b.booking_id,
+    b.movie_name,
+    b.theatre_name,
+    bt.seat_number,
+    bt.seat_price,
+    bf.food_item_id,
+    bf.quantity,
+    bf.food_price,
+    bf.total_amount AS food_total
+FROM 
+    booking b
+JOIN 
+    booking_ticket bt ON b.booking_id = bt.booking_id
+JOIN 
+    booking_food bf ON b.booking_id = bf.booking_id;
+
+//Total Ticket Revenue per Movie
+
+SELECT 
+    b.movie_name,
+    SUM(bt.seat_price) AS total_ticket_revenue
+FROM 
+    booking b
+JOIN 
+    booking_ticket bt ON b.booking_id = bt.booking_id
+GROUP BY 
+    b.movie_name;
+
+//Movies with Revenue Greater Than a Threshold
+
+SELECT 
+    b.movie_name,
+    SUM(bt.seat_price) AS total_ticket_revenue
+FROM 
+    booking b
+JOIN 
+    booking_ticket bt ON b.booking_id = bt.booking_id
+GROUP BY 
+    b.movie_name
+HAVING 
+    SUM(bt.seat_price) > 500;
 
 
-DECLARE
-    -- Declare variables for ticket and food data
-    v_booking_id NUMBER;
-    v_ticket_price NUMBER;
-    v_seat_number VARCHAR2(10);
-    v_food_price NUMBER;
-    v_total_ticket_amount NUMBER := 0;
-    v_total_food_amount NUMBER := 0;
-    v_total_amount NUMBER := 0;
-    v_ticket_count NUMBER := 3; -- Number of tickets booked
-    v_food_count NUMBER := 5; -- 2 samosas, 3 pop korn
-    v_error_code EXCEPTION;
+//Top Earning Theatres
+
+SELECT 
+    b.theatre_name,
+    SUM(b.total_amount) AS total_earnings
+FROM 
+    booking b
+GROUP BY 
+    b.theatre_name
+ORDER BY 
+    total_earnings DESC;
 
 
-BEGIN
-    -- Start the transaction
-    SAVEPOINT booking_start;
-    
-    -- Insert booking record (movie name, theatre, and customer details)
-    INSERT INTO booking (booking_id, movie_name, theatre_name, number_of_tickets)
-    VALUES (booking_seq.NEXTVAL, 'Rubber Ball', 'Star Theatre', v_ticket_count)
-    RETURNING booking_id INTO v_booking_id;
+//Average Ticket Price
 
-    -- Fetch ticket price and seat details from the ticket table for 3 tickets
-    FOR i IN 1..v_ticket_count LOOP
-        SELECT seat_price, seat_number INTO v_ticket_price, v_seat_number
-        FROM ticket
-        WHERE ROWNUM = 1; -- Assuming we are selecting the first available ticket
+SELECT 
+    b.movie_name,
+    AVG(bt.seat_price) AS avg_ticket_price
+FROM 
+    booking b
+JOIN 
+    booking_ticket bt ON b.booking_id = bt.booking_id
+GROUP BY 
+    b.movie_name;
 
-        -- Insert ticket data into the booking_ticket table
-        INSERT INTO booking_ticket (booking_ticket_id, booking_id, ticket_id, seat_number, seat_price)
-        VALUES (booking_ticket_seq.NEXTVAL, v_booking_id, i, v_seat_number, v_ticket_price);
-        
-        -- Accumulate ticket amount
-        v_total_ticket_amount := v_total_ticket_amount + v_ticket_price;
-    END LOOP;
+//Total Food Ordered for Each Booking
 
-    -- Insert food items
-    -- Assuming two samosas (item_id 1) and three pop korn (item_id 2)
-    -- Fetch food price from food master table
-
-    
-    FOR j IN 1..v_food_count LOOP
-        IF j <= 2 THEN
-            SELECT price INTO v_food_price FROM food WHERE item_id = 1; -- Samosa
-        ELSE
-            SELECT price INTO v_food_price FROM food WHERE item_id = 2; -- Pop Korn
-        END IF;
-        
-        -- Insert food item data into booking_food table
-        INSERT INTO booking_food (booking_food_id, booking_id, food_item_id, quantity, food_price, total_amount)
-        VALUES (booking_food_seq.NEXTVAL, v_booking_id, CASE WHEN j <= 2 THEN 1 ELSE 2 END, 1, v_food_price, v_food_price);
-        
-        -- Accumulate food amount
-        v_total_food_amount := v_total_food_amount + v_food_price;
-    END LOOP;
-
-    -- Compute the total amount
-    v_total_amount := v_total_ticket_amount + v_total_food_amount;
-
-    -- Update the booking record with total ticket amount, food amount, and total amount
-    UPDATE booking
-    SET total_ticket_amount = v_total_ticket_amount,
-        total_food_amount = v_total_food_amount,
-        total_amount = v_total_amount
-    WHERE booking_id = v_booking_id;
-
-    COMMIT;  -- Commit the transaction if everything is successful
-
-EXCEPTION
-    WHEN OTHERS THEN
-        -- Rollback to the savepoint in case of an error
-        ROLLBACK TO booking_start;
-        -- Handle the error (for example, logging the error or raising an exception)
-        DBMS_OUTPUT.PUT_LINE('Error occurred: ' || SQLERRM);
-        RAISE;  -- Re-raise the error to propagate it
-END;
-/
+SELECT 
+    b.booking_id,
+    b.movie_name,
+    SUM(bf.total_amount) AS total_food_expenses
+FROM 
+    booking b
+JOIN 
+    booking_food bf ON b.booking_id = bf.booking_id
+GROUP BY 
+    b.booking_id, b.movie_name;
 
 
+//Total Revenue per Customer
 
-Step 3: Sequence for Primary Key Generation
+SELECT 
+    b.customer_id,
+    c.customer_name,
+    SUM(b.total_amount) AS total_revenue
+FROM 
+    booking b
+JOIN 
+    customer c ON b.customer_id = c.customer_id
+GROUP BY 
+    b.customer_id, c.customer_name
+ORDER BY 
+    total_revenue DESC;
 
 
-CREATE SEQUENCE booking_seq START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE booking_ticket_seq START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE booking_food_seq START WITH 1 INCREMENT BY 1;
+//Find Movies Watched by More than One Booking
+
+SELECT 
+    b.movie_name,
+    COUNT(b.booking_id) AS booking_count
+FROM 
+    booking b
+GROUP BY 
+    b.movie_name
+HAVING 
+    COUNT(b.booking_id) > 1;
+
+
+//Total Quantity of Each Food Item Sold
+
+SELECT 
+    f.item_name,
+    SUM(bf.quantity) AS total_quantity_sold
+FROM 
+    food f
+JOIN 
+    booking_food bf ON f.item_id = bf.food_item_id
+GROUP BY 
+    f.item_name
+ORDER BY 
+    total_quantity_sold DESC;
+
+
+//Detailed Customer Booking Report
+
+SELECT 
+    c.customer_name,
+    b.movie_name,
+    b.theatre_name,
+    b.total_amount AS total_spent
+FROM 
+    booking b
+JOIN 
+    customer c ON b.customer_id = c.customer_id
+ORDER BY 
+    total_spent DESC;
+
+//Highest Revenue Generating Movie
+
+SELECT 
+    movie_name
+FROM 
+    booking
+WHERE 
+    total_amount = (SELECT MAX(total_amount) FROM booking);
+
+
+// Customers Who Spent More Than the Average
+
+SELECT 
+    customer_id, 
+    customer_name
+FROM 
+    customer
+WHERE 
+    customer_id IN (
+        SELECT 
+            customer_id
+        FROM 
+            booking
+        WHERE 
+            total_amount > (SELECT AVG(total_amount) FROM booking)
+    );
+
+//Find Customers with Maximum Spending Per Movie
+
+SELECT 
+    c.customer_name,
+    b.movie_name,
+    b.total_amount
+FROM 
+    booking b
+JOIN 
+    customer c ON b.customer_id = c.customer_id
+WHERE 
+    b.total_amount = (
+        SELECT 
+            MAX(b2.total_amount)
+        FROM 
+            booking b2
+        WHERE 
+            b2.movie_name = b.movie_name
+    );
+
+//Find Movies Watched More Than Once by the Same Customer
+
+SELECT 
+    b1.customer_id,
+    c.customer_name,
+    b1.movie_name
+FROM 
+    booking b1
+JOIN 
+    customer c ON b1.customer_id = c.customer_id
+WHERE 
+    EXISTS (
+        SELECT 
+            1
+        FROM 
+            booking b2
+        WHERE 
+            b2.movie_name = b1.movie_name 
+              AND b2.customer_id = b1.customer_id
+              AND b2.booking_id != b1.booking_id
+    );
