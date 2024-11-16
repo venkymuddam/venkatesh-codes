@@ -318,3 +318,92 @@ int main(void)
     
     return 0;
 }
+
+
+
+--------------------------------------- Question 27-----------------------------------
+
+
+//To count the number of vowels present in a string
+
+pseudofunctions:
+
+function countVowels(str --> string) --> int
+
+    vowels = 0
+    
+    for i from 0...str[i]  
+    
+        if (str[i] =='a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' 
+        || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U')
+
+             vowels++
+        end if
+        
+    return vowels
+    end for
+
+end function
+
+function countVowelsTest()
+    
+    input str
+
+    vowels = countVowels(str)
+       print "Total number of Vowels is : " 
+
+pseudocode:
+    
+function main()
+
+    countVowelsTest()
+    return 0
+
+
+
+C++ CODE:
+
+#include <iostream>
+#include <stdio.h>
+using std::cout;
+using std::cin;
+using std::string;
+
+
+int countVowels(string str)
+{
+    int vowels = 0;
+    
+    
+    for (int i = 0; i<str[i]; i++)  
+    {
+        if (str[i] =='a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' 
+        || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U')
+
+        {
+		    vowels++;
+        }
+     }  
+    return vowels;
+}
+
+void countVowelsTest(void)
+{
+    
+    string str;
+
+    cout << "Enter the string : ";
+    cin >> str;
+
+    int vowels = countVowels(str);
+    cout << "Total number of Vowels : " << vowels;
+    
+}
+
+int main(void)
+{
+
+     countVowelsTest();
+     return 0;
+}
+
