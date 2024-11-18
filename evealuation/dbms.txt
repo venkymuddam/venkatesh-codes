@@ -191,18 +191,18 @@ airline_id	airline_name
 Seat Table
 
 seat_id	seat_number	seat_price
-1	12A	5000
-2	12B	5000
-3	12C	5000
-4	1A	8000
-5	1B	8000
+1	         12A	5000
+2	         12B	5000
+3	         12C	5000
+4	         1A	    8000
+5	         1B	    8000
 
 Meal Table
 
 meal_id	meal_name	price
-1	Veg Meal	300
-2	Chicken Meal	500
-3	Coffee	100
+1	    Veg Meal	300
+2	   Chicken Meal	500
+3	     Coffee	    100
 
 Booking Table
 
