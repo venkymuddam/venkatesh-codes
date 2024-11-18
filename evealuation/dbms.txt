@@ -164,6 +164,15 @@ INSERT INTO booking_meal VALUES (3, 'Coffee', 100, 3, 300, 1);
 INSERT INTO booking_meal VALUES (1, 'Veg Meal', 300, 1, 300, 2);
 INSERT INTO booking_meal VALUES (2, 'Chicken Meal', 500, 2, 1000, 2);
 
+Delete 
+DELETE FROM booking_meal where meal_id = 2;
+
+SELECT SUM(amount) as total_meal_amount FROM booking_meal;
+SELECT AVG(amount) as total_meal_amount_average FROM booking_meal;
+SELECT MIN(amount) as minimum_meal_amount FROM booking_meal;
+SELECT MAX(amount) as max_meal_amount FROM booking_meal;
+
+
 
 Tabular Data Representation
 
@@ -249,7 +258,6 @@ Step 2: Update Script
 
 
 UPDATE booking
-
 SET show_date_time = TO_DATE('20-Nov-2024 10:00 AM', 'DD-Mon-YYYY HH:MI AM'),
     aadhaar_id = '123456789012'
 WHERE booking_id = 1;  -- Assuming booking_id = 1 for Flight AI102
