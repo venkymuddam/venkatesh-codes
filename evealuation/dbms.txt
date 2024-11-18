@@ -43,7 +43,7 @@ CREATE TABLE Bookings (
     Fare NUMBER NOT NULL
 );
 
-TRUNCATE TABLE AIRLINES;
+
 
 INSERT INTO Airlines (AirlineID, AirlineName) VALUES
 ('AI001', 'Air India');
@@ -76,6 +76,35 @@ INSERT INTO Bookings (BookingID, PassportNumber, FlightCode, DateOfBooking, Tick
 (3, 'P1122334', 'SG789', TO_DATE('2024-12-10', 'YYYY-MM-DD'), 'Economy', 2000);
 
 COMMIT;
+
+Airlines Table
+
+AIRLINEID | AIRLINENAME                                       
+---------- --------------------------------------------------
+ 01        Air India                                         
+IN002      IndiGo                                            
+SG003      SpiceJet                                          
+
+Flights Table
+
+FLIGHTCODE AIRLINEID  SOURCE                                             DESTINATION                                        DEPARTURETIME        ARRIVALTIME          DATEOFFL DURAT PRICEECONOMY PRICEBUSINESS
+---------- ---------- -------------------------------------------------- -------------------------------------------------- -------------------- -------------------- -------- ----- ------------ -------------
+AI123      AI001      Delhi                                              Chennai                                            10:00 AM             01:00 PM             15/12/24 3h            4500          8000
+IN456      IN002      Mumbai                                             Kolkata                                            06:00 PM             09:30 PM             20/12/24 3h30m         3500          7500
+SG789      SG003      Bangalore                                          Hyderabad                                          07:00 AM             08:30 AM             25/12/24 1h30m         2000          5000
+
+Passengers Table
+
+PASSPORT FIRSTNAME                                          LASTNAME                                                  AGE S PHONE      ADDRESS                                                                                             -------- -------------------------------------------------- -------------------------------------------------- ---------- - ---------- ----------------------------------------------------------------------------------------------------P1234567 Sachin                                             Tendulkar                                                  50 M 9998887777 Mumbai, India                                                                                       P7654321 Virat                                              Kohli                                                      35 M 8765432109 Delhi, India                                                                                        P1122334 Smriti                                             Mandhana                                                   28 F 7654321098 Bangalore, India                                                  
+
+
+Booking Table
+
+BOOKINGID PASSPORT FLIGHTCODE DATEOFBO TICKETCLASS                FARE
+---------- -------- ---------- -------- -------------------- ----------
+         1 P1234567 AI123      01/12/24 Economy                    4000
+         2 P7654321 IN456      05/12/24 Business                   7500
+         3 P1122334 SG789      10/12/24 Economy                    2000
 
 
 
