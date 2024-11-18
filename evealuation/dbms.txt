@@ -232,9 +232,6 @@ meal_id	meal_name	price	quantity	amount	booking_id
 
 I have booked tickets using my Aadhaar ID.
 
-    I watched Flight AI102 on 20-Nov-2024 at 10:00 AM.
-    I watched Flight SG345 on 22-Nov-2024 at 5:00 PM.
-
 //--------------------------------------------------------------------------------------------
 
 Step 1: Alter Table Script
@@ -274,282 +271,94 @@ WHERE booking_id = 2;  -- Assuming booking_id = 2 for Flight SG345
 
 //---------------------------------------------------------------------------------------------------------------------
 
-I have booked tickets for my family. Only 3 tickets for Rubber Ball movie at Star Theatre. [Use the ticket numbers and price from the ticket table].
-
-I also bought two samosas and three pop korn.
-
-Please book this ticket as a single transaction in Oracle with exception handling.
-
-    If data is readable from the master table, read and use it.
-    If data is computable, compute and update the table during the transaction.
-
+I have provided my passport ID for flight bookings.
+AI102 (Chennai to Delhi) was booked on 20/Nov/2024, departing at 10:00 AM.
+SG345 (Bangalore to Mumbai) was booked on 22/Nov/2024, departing at 5:00 PM.
+Please add passport_id and booking_datetime columns to the booking table.
+Also, provide me with the necessary ALTER table script to add these columns and the UPDATE script to populate the booking_datetime and passport_id fields for these bookings.
 
 //-------------------------------------------------------------------------------------------------------
 
+ALTER TABLE Script
 
-Step 1: Set Up Master Tables
-
-
-CREATE TABLE ticket (
-    ticket_id NUMBER PRIMARY KEY,
-    seat_number VARCHAR2(10),
-    seat_price NUMBER
+-- Add the new columns to the booking table
+ALTER TABLE booking
+ADD (
+    passport_id VARCHAR2(20) NOT NULL,
+    booking_datetime TIMESTAMP NOT NULL
 );
 
-food Table
+UPDATE Script
 
-CREATE TABLE food (
-    item_id NUMBER PRIMARY KEY,
-    item_name VARCHAR2(50),
-    price NUMBER
-);
+-- Update the new columns with the provided data
+UPDATE booking
+SET passport_id = 'A1234567',
+    booking_datetime = TO_DATE('20-NOV-2024 10:00 AM', 'DD-MON-YYYY HH:MI AM')
+WHERE booking_id = 1; -- Replace with the actual booking ID for AI102
 
-booking Table
+UPDATE booking
+SET passport_id = 'A1234567',
+    booking_datetime = TO_DATE('22-NOV-2024 05:00 PM', 'DD-MON-YYYY HH:MI AM')
+WHERE booking_id = 2; -- Replace with the actual booking ID for SG345
 
-CREATE TABLE booking (
-    booking_id NUMBER PRIMARY KEY,
-    movie_name VARCHAR2(50),
-    theatre_name VARCHAR2(50),
-    number_of_tickets NUMBER,
-    total_ticket_amount NUMBER,
-    total_food_amount NUMBER,
-    total_amount NUMBER,
-    customer_id NUMBER
-);
 
-booking_ticket Table
 
-CREATE TABLE booking_ticket (
-    booking_ticket_id NUMBER PRIMARY KEY,
-    booking_id NUMBER,
-    ticket_id NUMBER,
-    seat_number VARCHAR2(10),
-    seat_price NUMBER,
-    FOREIGN KEY (booking_id) REFERENCES booking(booking_id),
-    FOREIGN KEY (ticket_id) REFERENCES ticket(ticket_id)
-);
+Find the total seats booked for each flight:
 
-booking_food Table
+SELECT 
+    f.flight_number,
+    SUM(b.seats_booked) AS total_seats_booked
+FROM 
+    flights f
+LEFT JOIN 
+    bookings b ON f.flight_id = b.flight_id
+GROUP BY 
+    f.flight_number
+ORDER BY 
+    total_seats_booked DESC;
 
-CREATE TABLE booking_food (
-    booking_food_id NUMBER PRIMARY KEY,
-    booking_id NUMBER,
-    food_item_id NUMBER,
-    quantity NUMBER,
-    food_price NUMBER,
-    total_amount NUMBER,
-    FOREIGN KEY (booking_id) REFERENCES booking(booking_id),
-    FOREIGN KEY (food_item_id) REFERENCES food(item_id)
-);
+ON CASCADE DELETE
 
-//Retrieve Complete Booking Details
+Set up a foreign key with ON DELETE CASCADE in the bookings table:
+
+ALTER TABLE bookings
+ADD CONSTRAINT fk_passenger
+FOREIGN KEY (passenger_id) 
+REFERENCES passengers(passenger_id) 
+ON DELETE CASCADE;
+
+Get all passengers and their bookings (including passengers who haven’t made any bookings):
+
+SELECT 
+    p.passenger_id,
+    p.name AS passenger_name,
+    b.booking_id,
+    b.booking_date
+FROM 
+    passengers p
+LEFT OUTER JOIN 
+    bookings b ON p.passenger_id = b.passenger_id;
+
+Get all bookings and their associated passengers (including bookings without passenger details due to missing records):
 
 SELECT 
     b.booking_id,
-    b.movie_name,
-    b.theatre_name,
-    bt.seat_number,
-    bt.seat_price,
-    bf.food_item_id,
-    bf.quantity,
-    bf.food_price,
-    bf.total_amount AS food_total
+    b.booking_date,
+    p.name AS passenger_name
 FROM 
-    booking b
-JOIN 
-    booking_ticket bt ON b.booking_id = bt.booking_id
-JOIN 
-    booking_food bf ON b.booking_id = bf.booking_id;
+    passengers p
+RIGHT OUTER JOIN 
+    bookings b ON p.passenger_id = b.passenger_id;
 
-//Total Ticket Revenue per Movie
+Get a combined list of all passengers and bookings, showing unmatched data from both sides:
 
 SELECT 
-    b.movie_name,
-    SUM(bt.seat_price) AS total_ticket_revenue
-FROM 
-    booking b
-JOIN 
-    booking_ticket bt ON b.booking_id = bt.booking_id
-GROUP BY 
-    b.movie_name;
-
-//Movies with Revenue Greater Than a Threshold
-
-SELECT 
-    b.movie_name,
-    SUM(bt.seat_price) AS total_ticket_revenue
-FROM 
-    booking b
-JOIN 
-    booking_ticket bt ON b.booking_id = bt.booking_id
-GROUP BY 
-    b.movie_name
-HAVING 
-    SUM(bt.seat_price) > 500;
-
-
-//Top Earning Theatres
-
-SELECT 
-    b.theatre_name,
-    SUM(b.total_amount) AS total_earnings
-FROM 
-    booking b
-GROUP BY 
-    b.theatre_name
-ORDER BY 
-    total_earnings DESC;
-
-
-//Average Ticket Price
-
-SELECT 
-    b.movie_name,
-    AVG(bt.seat_price) AS avg_ticket_price
-FROM 
-    booking b
-JOIN 
-    booking_ticket bt ON b.booking_id = bt.booking_id
-GROUP BY 
-    b.movie_name;
-
-//Total Food Ordered for Each Booking
-
-SELECT 
+    p.passenger_id,
+    p.name AS passenger_name,
     b.booking_id,
-    b.movie_name,
-    SUM(bf.total_amount) AS total_food_expenses
+    b.booking_date
 FROM 
-    booking b
-JOIN 
-    booking_food bf ON b.booking_id = bf.booking_id
-GROUP BY 
-    b.booking_id, b.movie_name;
+    passengers p
+FULL OUTER JOIN 
+    bookings b ON p.passenger_id = b.passenger_id;
 
-
-//Total Revenue per Customer
-
-SELECT 
-    b.customer_id,
-    c.customer_name,
-    SUM(b.total_amount) AS total_revenue
-FROM 
-    booking b
-JOIN 
-    customer c ON b.customer_id = c.customer_id
-GROUP BY 
-    b.customer_id, c.customer_name
-ORDER BY 
-    total_revenue DESC;
-
-
-//Find Movies Watched by More than One Booking
-
-SELECT 
-    b.movie_name,
-    COUNT(b.booking_id) AS booking_count
-FROM 
-    booking b
-GROUP BY 
-    b.movie_name
-HAVING 
-    COUNT(b.booking_id) > 1;
-
-
-//Total Quantity of Each Food Item Sold
-
-SELECT 
-    f.item_name,
-    SUM(bf.quantity) AS total_quantity_sold
-FROM 
-    food f
-JOIN 
-    booking_food bf ON f.item_id = bf.food_item_id
-GROUP BY 
-    f.item_name
-ORDER BY 
-    total_quantity_sold DESC;
-
-
-//Detailed Customer Booking Report
-
-SELECT 
-    c.customer_name,
-    b.movie_name,
-    b.theatre_name,
-    b.total_amount AS total_spent
-FROM 
-    booking b
-JOIN 
-    customer c ON b.customer_id = c.customer_id
-ORDER BY 
-    total_spent DESC;
-
-//Highest Revenue Generating Movie
-
-SELECT 
-    movie_name
-FROM 
-    booking
-WHERE 
-    total_amount = (SELECT MAX(total_amount) FROM booking);
-
-
-// Customers Who Spent More Than the Average
-
-SELECT 
-    customer_id, 
-    customer_name
-FROM 
-    customer
-WHERE 
-    customer_id IN (
-        SELECT 
-            customer_id
-        FROM 
-            booking
-        WHERE 
-            total_amount > (SELECT AVG(total_amount) FROM booking)
-    );
-
-//Find Customers with Maximum Spending Per Movie
-
-SELECT 
-    c.customer_name,
-    b.movie_name,
-    b.total_amount
-FROM 
-    booking b
-JOIN 
-    customer c ON b.customer_id = c.customer_id
-WHERE 
-    b.total_amount = (
-        SELECT 
-            MAX(b2.total_amount)
-        FROM 
-            booking b2
-        WHERE 
-            b2.movie_name = b.movie_name
-    );
-
-//Find Movies Watched More Than Once by the Same Customer
-
-SELECT 
-    b1.customer_id,
-    c.customer_name,
-    b1.movie_name
-FROM 
-    booking b1
-JOIN 
-    customer c ON b1.customer_id = c.customer_id
-WHERE 
-    EXISTS (
-        SELECT 
-            1
-        FROM 
-            booking b2
-        WHERE 
-            b2.movie_name = b1.movie_name 
-              AND b2.customer_id = b1.customer_id
-              AND b2.booking_id != b1.booking_id
-    );
