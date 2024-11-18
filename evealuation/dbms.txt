@@ -80,7 +80,7 @@ COMMIT;
 Airlines Table
 
 AIRLINEID | AIRLINENAME                                       
----------- --------------------------------------------------
+---------- -------------
  01        Air India                                         
 IN002      IndiGo                                            
 SG003      SpiceJet                                          
