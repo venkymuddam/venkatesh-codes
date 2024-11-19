@@ -2215,8 +2215,9 @@ function findMinTemperature(temperature->[int],size->int)->int
 return minTemp
 
 function Test()
-    //temperature [int]
+    temperature [int]
     size=0
+    qualify[int] 
     readTemperature(temperature, size)
     TemperatureSum= findTemperatureSum(temperature->[int] , size ->int)->int
     averageTemperature = findTemperatureAverage(TemperatureSum, size)
@@ -2235,12 +2236,18 @@ function Test()
     print min3DigitTemperatureSum
     print minimumTemperature
     print oddTemperatureSum
-    print secondMaxOddTemperature
+    
     if isprime(minimumTemperature)
          print "The minimum temperature is an prime number"
     else
          print "The minimum temperature is not a prime number"  
 
+    if(secondMaximumOddTemperature == -1)
+        print " No second maximum odd temperature found as there is only 1 odd prime"
+    else
+        print " Second Maximum of Odd Temperatures is: " secondMaximumOddTemperature
+               
+    
 pseudoMain 
     Test()
 
@@ -2385,7 +2392,7 @@ int maxOdd = INT_MIN, secondMaxOdd = INT_MIN;
      }
      if (secondMaxOdd ==INT_MIN)
      {
-         cout << " No second maximum odd temperature found " << endl;
+         
          return -1;
      }
      return secondMaxOdd;
@@ -2480,7 +2487,10 @@ void Test()
     cout << "Sum of 3 Digits is: " << sum3Digit << endl;
     cout << "Sum of Prime Temperature is: " << sumOfOddTemperature <<endl;
     
-
+    if (isPrimeTemperture(minimumTemperature))
+         cout << "The minimum temperature is an prime number";
+    else
+         cout << "The minimum temperature is not a prime number";  
 
 }
 
@@ -2490,6 +2500,8 @@ int main()
     Test();
     return EXIT_SUCCESS;
 }
+
+
 
 
 //------------------------------------------------Question 30-----------------------------------------------------
