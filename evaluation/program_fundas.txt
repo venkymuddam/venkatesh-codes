@@ -2215,8 +2215,9 @@ function findMinTemperature(temperature->[int],size->int)->int
 return minTemp
 
 function Test()
-    //temperature [int]
+    temperature [int]
     size=0
+    qualify[int] 
     readTemperature(temperature, size)
     TemperatureSum= findTemperatureSum(temperature->[int] , size ->int)->int
     averageTemperature = findTemperatureAverage(TemperatureSum, size)
