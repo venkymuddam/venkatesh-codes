@@ -2235,12 +2235,18 @@ function Test()
     print min3DigitTemperatureSum
     print minimumTemperature
     print oddTemperatureSum
-    print secondMaxOddTemperature
+    
     if isprime(minimumTemperature)
          print "The minimum temperature is an prime number"
     else
          print "The minimum temperature is not a prime number"  
 
+    if(secondMaximumOddTemperature == -1)
+        print " No second maximum odd temperature found as there is only 1 odd prime"
+    else
+        print " Second Maximum of Odd Temperatures is: " secondMaximumOddTemperature
+               
+    
 pseudoMain 
     Test()
 
@@ -2480,7 +2486,10 @@ void Test()
     cout << "Sum of 3 Digits is: " << sum3Digit << endl;
     cout << "Sum of Prime Temperature is: " << sumOfOddTemperature <<endl;
     
-
+    if (isPrimeTemperture(minimumTemperature))
+         cout << "The minimum temperature is an prime number";
+    else
+         cout << "The minimum temperature is not a prime number";  
 
 }
 
@@ -2490,6 +2499,8 @@ int main()
     Test();
     return EXIT_SUCCESS;
 }
+
+
 
 
 //------------------------------------------------Question 30-----------------------------------------------------
