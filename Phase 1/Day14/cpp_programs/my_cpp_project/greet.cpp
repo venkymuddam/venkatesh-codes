@@ -43,7 +43,6 @@ that asks the user for their name and prints a greeting message.
         cout << "Enter a name: ";
         cin >> name;
         cout << "Hello ," << name << "! Welcome to the C++ world!";
-        cout << "Goodbye, " << name << "! Have a great day!" ;
     }
 
     
@@ -86,6 +85,7 @@ to add a simple farewell message and save the changes.
         cout << "Enter a name: ";
         cin >> name;
         cout << "Hello ," << name << "! Welcome to the C++ world!" << endl;
+        cout << "Goodbye, " << name << "! Have a great day!" ;
     }
 
 
