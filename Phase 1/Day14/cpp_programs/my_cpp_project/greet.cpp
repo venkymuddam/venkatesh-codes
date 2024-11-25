@@ -44,6 +44,9 @@ that asks the user for their name and prints a greeting message.
         cin >> name;
         cout << "Hello ," << name << "! Welcome to the C++ world!";
     }
+     ctrl + x to save
+     press y(yes) to save modified buffer
+     press enter to Write: hello_name.cpp   
 
     
 5. Compile the `greet.cpp` program into an executable.
@@ -87,6 +90,10 @@ to add a simple farewell message and save the changes.
         cout << "Hello ," << name << "! Welcome to the C++ world!" << endl;
         cout << "Goodbye, " << name << "! Have a great day!" ;
     }
+
+    ctrl + x to save
+    press y(yes) to save modified buffer
+    press enter to Write: hello_name.cpp 
 
 
 9. Compile and run the modified program 
