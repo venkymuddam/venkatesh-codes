@@ -1,0 +1,18 @@
+//Athira
+compares the result Value 
+
+
+//venketesh
+compares dosage
+
+
+//Minhaj
+compares the Dosage 
+
+
+
+//sooraj
+compares the duration
+
+//sreya
+compares the age
