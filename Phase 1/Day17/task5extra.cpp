@@ -64,7 +64,7 @@ int SecondMax(const HospitalStay stays[], int size) {
     return secondmax;
 }
 
-or
+// or
 
 // int SecondMax(const HospitalStay stays[], int size) {
 //     int firstmaxIndex = -1; // Index of the first max

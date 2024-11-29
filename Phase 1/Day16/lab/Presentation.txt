@@ -1,18 +1,67 @@
-//Athira
-compares the result Value 
+
+Team Presentation Review Report
+1. Minhaj
+    compares the Dosage 
+    Strengths:
+    Minhaj did an excellent job explaining the concepts clearly and effectively.
+    Areas for Improvement:
+    Initially, the program presented was slightly different from the assigned question. However, he corrected it promptly and delivered a solid presentation.
+    Overall Feedback:
+    A good performance with strong adaptability to rectify and present the correct program.
 
 
-//venketesh
-compares dosage
+2. Sooraj
+    compares the duration
+    Strengths:
+    Sooraj excelled in explaining the program and delivering a live demonstration.
+    Overall Feedback:
+    His clear explanation and practical demonstration made the presentation highly engaging and effective.
+
+3. Venkatesh
+    compares dosage
+    Strengths:
+    Venkatesh explained the program thoroughly and demonstrated the output effectively. The content was well-organized and easy to follow.
+    Overall Feedback:
+    A well-executed presentation with clarity in both explanation and demonstration.
+
+4. Athira
+    compares the result Value 
+    Strengths:
+    Athira presented a well-structured program, explained it clearly, and demonstrated the output effectively.
+    Overall Feedback:
+    The presentation was comprehensive and understandable, showcasing good preparation and delivery.
+
+5. Sreya
+    compares the age
+    Strengths:
+    Sreya presented a well-structured program, explained it clearly, and demonstrated the output effectively.
+    Overall Feedback:
+    The presentation was organized and easy to understand, reflecting a strong understanding of the topic.
 
 
-//Minhaj
-compares the Dosage 
 
 
+    Questions asked
 
-//sooraj
-compares the duration
+    Why do we use a constructor in this program?
 
-//sreya
-compares the age
+     The constructor is used to initialize the DoctorID and YearsOfExperience properties at the time of object creation. This ensures the object starts with meaningful values and reduces the need for manual initialization later.
+
+    What does const Doctor& other mean in the functions?
+
+     It means that the function takes a reference to another Doctor object as an argument. The const ensures the function doesn’t modify the other object, and using a reference avoids making a copy of the object, improving performance.
+
+    What is the purpose of the LessThanEquals function?
+
+     It compares the YearsOfExperience of the current Doctor object (this) with another Doctor object passed as an argument (other) and checks if the current doctor has less than or equal experience.
+     What will happen if you remove the const keyword from the function parameter?
+
+    Expected Answer: Without const, the function could accidentally modify the other object passed as an argument. It would also disallow passing const objects to the function, limiting its usability.
+
+    Can you explain the difference between d1.Equals(d2) and d1.NotEquals(d2)?
+
+    Expected Answer: d1.Equals(d2) returns true if d1.YearsOfExperience is equal to d2.YearsOfExperience, while d1.NotEquals(d2) returns true if they are not equal.
+
+    Why did we use #include <string> in this program?
+
+    Expected Answer: The string class is part of the Standard Template Library (STL), and #include <string> provides access to it. This allows us to use std::string to store text data like DoctorID.
