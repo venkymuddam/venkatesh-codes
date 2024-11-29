@@ -1,7 +1,7 @@
 
 Team Presentation Review Report
 1. Minhaj
-    compares the Dosage 
+    compares the Dosage Administered 
     Strengths:
     Minhaj did an excellent job explaining the concepts clearly and effectively.
     Areas for Improvement:
@@ -41,7 +41,7 @@ Team Presentation Review Report
 
 
 
-    Questions asked
+    Questions asked(example answer with YearsOfExperience program)
 
     Why do we use a constructor in this program?
 
@@ -56,12 +56,12 @@ Team Presentation Review Report
      It compares the YearsOfExperience of the current Doctor object (this) with another Doctor object passed as an argument (other) and checks if the current doctor has less than or equal experience.
      What will happen if you remove the const keyword from the function parameter?
 
-    Expected Answer: Without const, the function could accidentally modify the other object passed as an argument. It would also disallow passing const objects to the function, limiting its usability.
+    Without const, the function could accidentally modify the other object passed as an argument. It would also disallow passing const objects to the function, limiting its usability.
 
     Can you explain the difference between d1.Equals(d2) and d1.NotEquals(d2)?
 
-    Expected Answer: d1.Equals(d2) returns true if d1.YearsOfExperience is equal to d2.YearsOfExperience, while d1.NotEquals(d2) returns true if they are not equal.
+    d1.Equals(d2) returns true if d1.YearsOfExperience is equal to d2.YearsOfExperience, while d1.NotEquals(d2) returns true if they are not equal.
 
     Why did we use #include <string> in this program?
 
-    Expected Answer: The string class is part of the Standard Template Library (STL), and #include <string> provides access to it. This allows us to use std::string to store text data like DoctorID.
+    The string class is part of the Standard Template Library (STL), and #include <string> provides access to it. This allows us to use std::string to store text data like DoctorID.
