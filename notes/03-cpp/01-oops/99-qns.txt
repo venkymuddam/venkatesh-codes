@@ -1,0 +1,215 @@
+1. what is function? [user-defined function]
+    named code, takes arguments, returns value also.
+    - modularization (to solve task: ie task code)
+    - reusability
+2. what is object? [user-defined type]
+    object, instance : synonymous 
+    to handle composite data, 
+    varialbe to represent bundle which holds the composite data 
+    --
+    variable of type 'defined class'
+    variable of type Rectangle class 
+    variable of type Circle class 
+    variable of type HospitalStay class 
+    --
+3. what is class? 
+    defined class is the datatype of the object. 
+    Rectangle class is the datatype of the objects 
+        rectangle1(30,40), rectangle2(60,15) etc 
+    + define functions to operate on object attributes 
+    member functions of the object  - object functions 
+    instance methods 
+
+    + encapsulation : [data + functions operating on data]
+    + abstraction: public behaviours : see interface to talk to the object 
+    to find sum and diff of two complex numbers.
+    class ComplexNumber 
+        - real : double 
+        - imaginary : double 
+        + findSum(ComplexNumber&) : ComplexNumber 
+        + findDiff(ComplexNumber&) : ComplexNumber 
+    ComplexNumber c1(10,3), c2(15,18), c3(4, 7), c4(67,2);
+    ComplexNumber s = c1.findSum(c2);
+    ComplexNumber d = c3.findDiff(c4);
+
+4. who will access the private members of the object?  
+To operate the data of the objects outside the class:
+4.1 objects with members functions:
+-----------------------------------------
+   HospitalStay { StayID, NumberOfDays}
+    - StayID : string
+    - NumberOfDays : int
+    -----------------------------------------
+    + Equals(HospitalStay& other) : bool 
+    + NotEquals(HospitalStay& other) : bool 
+    + GreaterThan(HospitalStay& other) : bool 
+    + GreaterThanEquals(HospitalStay& other) : bool 
+    + LessThan(HospitalStay& other) : bool 
+    + LessThanEquals(HospitalStay& other) : bool 
+    -----------------------------------------
+    + HospitalStay(p_StayID, p_NumberOfDays) 
+-----------------------------------------
+4.2: objects where functions are outside to operate on the data 
+-----------------------------------------
+   HospitalStay { StayID, NumberOfDays}
+    - StayID : string
+    - NumberOfDays : int
+    -----------------------------------------
+    
+    -----------------------------------------
+    + HospitalStay(p_StayID, p_NumberOfDays) 
+-----------------------------------------
++ Equals(HospitalStay& first, HospitalStay& second) : bool 
++ NotEquals(HospitalStay& first, HospitalStay& second) : bool 
++ GreaterThan(HospitalStay& first, HospitalStay& second) : bool 
++ GreaterThanEquals(HospitalStay& first, HospitalStay& second) : bool 
++ LessThan(HospitalStay& first, HospitalStay& second) : bool 
++ LessThanEquals(HospitalStay& first, HospitalStay& second) : bool 
+
+    HospitalStay hs1("HS001", 5);
+    HospitalStay hs2("HS002", 7);
+
+    Equals(hs1, hs2)
+    GreaterThan(hs1, hs2) 
+
+How Equals(..) or GreaterThan(..) will operates 
+on StayID and NumberOfDays?
+
+Answer To  `who will access the private members of the object? `:
+    who will access the private members of the object? 
+    1. member functions of the object 
+        MAHESH RECOMMENDATION: to use getter / setter
+    2. friend function (outside the object) of the object 
+    3. friend class (another class) of the object
+    4. public getter / setter for object private fields/attr 
+        MAHESH RECOMMENDATION: to use getter / setter
+
+
+5. what are all the members of the class? 
+    object members      [members of the object | instance members | non-static members]
+        object members will be accessed via object name 
+        - non-static member data 
+        - non-static member function 
+        - constructor ?? [initilalizer]
+        - destructor ?? [destoryer]
+    class-level members [static members]
+        class members will be accessed via class name 
+        - static member data 
+        - static member function 
+
+    5.1. why static member function?
+        - to operate on static member data
+            if there is/are static member data 
+        - to behave as general purpose function 
+            it operates only on arguments of the function 
+        - it cannot operate on non-static member data - illegal - syntax err 
+            ie object data 
+    5.2. why non-static member function? [object function]
+        - to operate on non-static member data
+            if there is/are non-static member data 
+        - to operate on static member data also if they exist
+        - to behave as general purpose function 
+            so that it operates only on arguments of the function 
+
+
+6. what is function overloading?
+    - To have more than one functions having same name 
+    - Examples of function Overloading:
+        Equals(hs1, hs2)            -- 1    name resolution by two stay objects 
+        Equals(hs1, hs2, hs3)       -- 2    name resolution by three stay objects 
+        Equals(p1, p2)              -- 3    name resolution by two patient objects 
+
+
+7. what is constructor? 
+    - intializer code at the time of object is mem allocated [mem allocs]
+        - the code will run after object creation
+   why constructor? 
+    - to aquire resource 
+        dynamic memory, file, network, server connection, database connection
+    - to initalize attributes of the object 
+       
+
+   what is destructor? 
+    - cleanup code at the time of object is memdeallocteed [free]
+         
+   why destructor? 
+    - to release resource 
+        dynamic memory, file, network, server connection, database connection
+        cleaning up the resources we initialized during in the constructor
+
+   how to define the constructor in C++?
+        - constructor will take the same name as class name 
+        - constructor may take the arguments also 
+        - return type is not possible because constructor will be called at the time object creation 
+
+        if classname is "Rectangle"
+            Rectange([argments])
+            {
+                //code the for constructor
+            }
+   how to define the destructor in C++? 
+        - destructor has the class name and prefixed with ~ symbol 
+        - destructor should not have any args or return type 
+        if classname is "Rectangle"
+            ~Rectange()
+            {
+                //code the for destructor 
+            }
+8. what are the types of the constructor? 
+    1. no arg constructor   | by default, no arg constructor is defined 
+    2. args constructor 
+    3. copy constructor : arg is the same class object which will be copied in copy constructor 
+        taking the copy of the argument object to the newly constructed object 
+        and keeping the argument object as it is 
+        patient :
+            id, name, etc 
+            stay 
+            medications[]
+            doctor 
+    4. move constructor : arg is the same class object which will be moved in move constructor 
+        taking the copy of the argument object to the newly constructed object 
+        then argument object is cleaned up, cleared etc. 
+
+9. what is lvalue and rvalue?
+    int x = 10;
+    int y = 20;
+    int z = 0;
+
+    z = (x + y);
+    //here z is lvalue 
+    //     right side evaluvated value is the rvalue 
+
+10. what is this pointer? 
+    In the member function of the object, 
+    'this' is the pointer to the called object. 
+
+    object      | intance -- synonymous 
+    creation      instantiation 
+
+
+    called  invoked     -- synonumous 
+
+    Now, we can use 'this' pointer to refer the members of the object 
+    using arrow operator (->)
+
+    this->member_data 
+    this->member_fn([...]) 
+
+11. what is member initializer in the constructor? 
+    Answer: 
+    The member initializer list is written 
+    after the constructor's parameter list and 
+    before the constructor body, 
+    separated by a colon (:). 
+    Each member is initialized with a value or an expression.
+
+    ClassName(parameter_list) : member1(value1), member2(value2), ... {
+        // Constructor body
+    }
+
+    A member initializer list is a powerful and 
+    efficient way to initialize class members 
+    in C++. 
+    It ensures correct initialization of 
+    const members, references, and base classes 
+    while improving code clarity and performance.
