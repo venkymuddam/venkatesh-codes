@@ -1,0 +1,107 @@
+Beginner Level Problem Statement: 
+Using `vi` Editor for Simple C++ Program and File Management
+
+`Objective`:  
+Learn how to use the `vi` editor 
+to create, edit, and manage a basic C++ program. 
+This task will also help you practice basic Linux commands 
+for file management and program compilation.
+
+---
+
+`Tasks`:
+
+1. `Create a 'cpp_programs' Directory`:
+
+     mkdir cpp_programs
+
+2. `Navigate to the 'cpp_programs' directory`:
+     
+     cd cpp_programs/
+
+3. `Create a new C++ program 'hello_world.cpp' using `vi``:
+    
+     vim hello_world.cpp
+
+4. `Write a simple C++ program`:
+     
+     i // to get inside insert mode
+
+     #include <iostream>
+     using namespace std;
+
+     int main() {
+       cout << "Hello, World!" << endl;
+       return 0;
+     }
+
+     press ESC exit from insert mode
+   
+
+5. `Save and exit the `vi` editor`:
+
+     :wq 
+
+6. `Compile the 'hello_world.cpp'  program`:
+
+     g++ hello_world.cpp
+
+7. `Run the 'hello_world.cpp' program`:
+    
+     ./a.out
+
+     `output`
+        Hello, World! 
+
+8. `Edit the 'hello_world.cpp' program`:
+
+     vim hello_world.cpp
+
+     i // to get inside insert mode
+
+     #include <iostream>
+     using namespace std;
+
+     int main() {
+       char name[20];
+       cout << "Enter your Name: ";
+       cin  << name;
+       cout << "Hello," << name  << endl;
+       return 0;
+     }
+
+     press ESC exit from insert mode
+
+     :wq to save and exit from the vim editor
+
+9. `Compile and run the modified 'hello_world.cpp' program`:
+      
+       g++ hello_world.cpp
+       ./a.out
+
+       `output`
+
+       Enter your Name: Abel
+       Hello,Abel
+
+
+10. `Delete the 'hello_world.cpp'  program file`:
+      
+       rm hello_world.cpp  
+
+11. `Remove the cpp_programs directory`:
+        
+        cd .. back to the parent directory
+        rmdir cpp_programs
+        ls to check if the directory exists
+---
+
+`conclusion`
+
+By following these steps, 
+I have used a variety of Linux commands and 
+the `vi`/`vim` editor 
+to manage files, directories, and processes. 
+
+I also have configured the `vim` editor 
+to suit my development needs.
